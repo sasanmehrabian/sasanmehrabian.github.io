@@ -16,7 +16,7 @@ minimal_mistakes_skin    : "default" # "air", "aqua", "contrast", "dark", "dirt"
 
 # Site Settings
 locale                   : "en-US"
-title                    : "Sasan Mehrabian, PhD"
+title                    : "Sasan Mehrabian, Ph.D."
 title_separator          : "-"
 name                     : "Sasan Mehrabian"
 description              : "My Data Science Portfolio"
@@ -107,7 +107,7 @@ analytics:
 # Site Author
 author:
   name             : "Sasan Mehrabian"
-  avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
+  avatar           : "/images/bio.jpg"
   bio              : "Data Science Portfolio"
   location         : "Toronto, ON, Canada"
   email            : "sasan.mehrabian@gmail.com"
