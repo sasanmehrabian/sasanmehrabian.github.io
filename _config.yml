@@ -16,10 +16,10 @@ minimal_mistakes_skin    : "default" # "air", "aqua", "contrast", "dark", "dirt"
 
 # Site Settings
 locale                   : "en-US"
-title                    : "Sasan Mehrabian"
-title_separator          : "Ph.D."
-name                     : "Sasan Mehrabian"
-description              : "My Portfolio"
+title                    : "Amar Sahota"
+title_separator          : "-"
+name                     : "Amar Sahota"
+description              : "Portfolio"
 url                      : # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
@@ -106,15 +106,15 @@ analytics:
 
 # Site Author
 author:
-  name             : "Sasan Mehrabian"
-  avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : "I am a motivated data scientist etc. etc."
+  name             : "Amar Sahota"
+  avatar           : "/images/Author-Favicon.png"
+  bio              : ""
   location         : "Toronto"
   email            :
   links:
-    - label: "sasan.mehrabian@gmail.com"
+    - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
-      # url: mailto:your.name@email.com
+      url: mailto:amar.sahota271@gmail.com
     - label: "Website"
       icon: "fas fa-fw fa-link"
       # url: "https://your-website.com"
@@ -126,10 +126,10 @@ author:
       # url: "https://facebook.com/"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
-      # url: "https://github.com/"
-    - label: "Instagram"
-      icon: "fab fa-fw fa-instagram"
-      # url: "https://instagram.com/"
+      url: "https://github.com/amarsahota/"
+    - label: "Linked-In"
+      icon: "fab fa-linkedin"
+      url: "https://www.linkedin.com/in/amar-sahota-104736bb/"
 
 # Site Footer
 footer:
@@ -279,6 +279,11 @@ compress_html:
   ignore:
     envs: development
 
+collections:
+  portfolio:
+    output: true
+    permalink: /:collection/:path/
+
 
 # Defaults
 defaults:
@@ -293,3 +298,23 @@ defaults:
       comments: # true
       share: true
       related: true
+
+  # _pages
+  - scope:
+      path: ""
+      type: pages
+    values:
+      layout: single
+      author_profile: true
+
+  # _portfolio
+  - scope:
+      path: ""
+      type: portfolio
+    values:
+      layout: single
+      author_profile: false
+      share: true
+
+
+

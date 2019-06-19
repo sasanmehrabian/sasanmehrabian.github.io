@@ -1,7 +1,14 @@
 # main links
 main:
-  - title: "Quick-Start Guide"
-    url: https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/
+    - title: "Quantitative Finance"
+      url: /qf/
+    - title: "Machine Learning"
+      url: /ml/
+    - title: "Data Analysis"
+      url: /da/
+    - title: "About"
+      url: /about/
+
   # - title: "About"
   #   url: https://mmistakes.github.io/minimal-mistakes/about/
   # - title: "Sample Posts"
