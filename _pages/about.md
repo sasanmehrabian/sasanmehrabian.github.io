@@ -14,6 +14,8 @@ layouts_gallery:
     alt: "archive layout example"
 last_modified_at: 2019-04-03T15:15:09-04:00
 toc: true
+header: 
+  image: "/images/Toronto2.jpg"
 ---
 
 I am a highly motivated data scientist with comprehensive mathematical modeling and implementation skills. I obtained my PhD in Mechanical Engineering from University of Toronto in 2016, specialized in experimental, analytical, and computational Fluid Dynamics.
