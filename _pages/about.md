@@ -1,6 +1,6 @@
 ---
 permalink: /about/
-title: "About"
+title: "About Me"
 excerpt: "Minimal Mistakes is a flexible two-column Jekyll theme."
 layouts_gallery:
   - url: /assets/images/mm-layout-splash.png
@@ -16,7 +16,9 @@ last_modified_at: 2019-04-03T15:15:09-04:00
 toc: true
 ---
 
-Minimal Mistakes is a flexible two-column Jekyll theme. Perfect for hosting your personal site, blog, or portfolio on GitHub or self-hosting on your own server. As the name implies --- styling is purposely minimalistic to be enhanced and customized by you :smile:.
+I am a highly motivated data scientist with comprehensive mathematical modeling and implementation skills. I obtained my PhD in Mechanical Engineering from University of Toronto in 2016, specialized in experimental, analytical, and computational Fluid Dynamics.
+
+
 
 {% include gallery id="layouts_gallery" caption="Examples of included layouts `splash`, `single`, and `archive`." %}
 
