@@ -12,7 +12,7 @@
 
 # theme                  : "minimal-mistakes-jekyll"
 # remote_theme           : "mmistakes/minimal-mistakes"
-minimal_mistakes_skin    : "default" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
+minimal_mistakes_skin    : "air" #"default" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
 
 # Site Settings
 locale                   : "en-US"
@@ -129,7 +129,7 @@ author:
       url: "https://github.com/sasanmehrabian/"
     - label: "Linked-In"
       icon: "fab fa-linkedin"
-      url: "https://www.linkedin.com/feed/"
+      url: "https://www.linkedin.com/in/sasan-mehrabian-phd-62955b38/?originalSubdomain=ca"
 
 # Site Footer
 footer:
