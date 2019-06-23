@@ -5,7 +5,7 @@ title: "LIBOR Interest Rates Analysis"
 author_profile: true
 toc: true
 header: 
-  image: "/images/LIBOR/term_structure.GIF"
+  image: "/images/LIBOR/term_structure.gif"
 
 ---
 ##  <a name="toc"/>
@@ -276,7 +276,7 @@ for (i in 1:L){
   ggsave(filename=paste(names[i],".png",sep=""), path = "C:\\Users\\User\\Google Drive\\R")  
 }
 ```
-<img src="{{ site.url }}{{ site.baseurl }}/images/LIBOR/term_structure.GIF">
+<img src="{{ site.url }}{{ site.baseurl }}/images/LIBOR/term_structure.gif">
 <video src="term_structure.mp4" width="320" height="200" controls preload></video>
 
 <video width="320" height="200" controls preload> 
