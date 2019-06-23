@@ -9,8 +9,17 @@ toc: true
 
 Hello My friend
 
+
+Python code block
+``` python
+import numpy as np
+def test(x,y)
+	z=np.sum(x,y)
+	return z
+```
+
 R code block
-''' R
+``` r
 library(quantmod) 
 library(tidyr)
 library(ggplot2)
@@ -53,4 +62,4 @@ date_range='198601/201912'
  
 }
 
-'''
+```
