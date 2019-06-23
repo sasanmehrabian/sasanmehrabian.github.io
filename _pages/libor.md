@@ -90,7 +90,7 @@ print(B)
 
 ## Term Structure
 Term structure of interest rates is the relationship between interest rates and different maturities. The term structure reflects expectations of market participants about future changes in interest rates. The term structure graph can have three different outcomes as depicted in the figure below. If there is a highly positive normal curve, it is a signal investors believe future economic growth to be strong and inflation high. If there is a highly negative inverted curve, it is a signal investors believe future economic growth to be sluggish and inflation low. A flat yield curve means investors are unsure about the future.
-<img src="{{ site.url }}{{ site.baseurl }}/images/LIBOR/term_structure.jpeg">
+<img src="{{ site.url }}{{ site.baseurl }}/images/LIBOR/term_structure.jpg">
 
 In this section I will show how to get the term structure for USD LIBOR rates. It would be time consuming to plot the term structure for every single day. Therefore, for this project I have manupilated the data to get the term structure for every month of the year. That means, we have to aggregate the data for every month of the year and get the mean and standard deviation:
 ```r
@@ -269,3 +269,7 @@ for (i in 1:L){
 }
 ```
 <video src="term_structure.mp4" width="320" height="200" controls preload></video>
+<video width="320" height="200" controls preload> 
+    <source src="term_structure.mp4"></source> 
+    <source src="term_structure.webm"></source> 
+</video>
