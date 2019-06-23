@@ -82,7 +82,7 @@ print(A)
 <img src="{{ site.url }}{{ site.baseurl }}/images/LIBOR/IR_ON.jpeg">
 And the plot for USD and CAD for 12 months rates
 ```r
-D=ggplot() + 
+B=ggplot() + 
       geom_line(data = USD12M, aes(x = index(USD12M), y =USD12M, col="USD", group=1), size=1.5) +
       geom_line(data = CAD12M, aes(x = index(CAD12M), y =CAD12M, col="CAD", group=1),size=1.5) +
       xlab('Date') +
@@ -99,3 +99,10 @@ print(B)
 ```
 <img src="{{ site.url }}{{ site.baseurl }}/images/LIBOR/IR_12M.jpeg">
 You can visualize the interest rates for other maturities using the same code.
+
+<video controls>
+  <source src="term_structure.mp4" type="video/mp4">
+  <source src="term_structure.webm" type="video/webm">
+  <p>Your browser doesn't support HTML5 video. Here is
+     a <a href="term_structure.mp4">link to the video</a> instead.</p>
+</video>
