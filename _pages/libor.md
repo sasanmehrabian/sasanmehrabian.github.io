@@ -4,8 +4,7 @@ permalink: /libor/
 title: "LIBOR Interest Rates Analysis"
 author_profile: true
 toc: true
-header: 
-  image: "/images/LIBOR/term_structure.gif"=640x360
+
 
 ---
 ##  <a name="toc"/>
@@ -16,7 +15,7 @@ header:
 - [Principle Componenet Analysis](#Principle)
 
 
-
+<img src="{{ site.url }}{{ site.baseurl }}/images/LIBOR/term_structure.gif">
 ## Introduction <a name="Introduction"/> 
 [Return to Top](#toc)
 
@@ -277,12 +276,6 @@ for (i in 1:L){
 }
 ```
 <img src="{{ site.url }}{{ site.baseurl }}/images/LIBOR/term_structure.gif">
-<video src="term_structure.mp4" width="320" height="200" controls preload></video>
-
-<video width="320" height="200" controls preload> 
-    <source src="term_structure.mp4"></source> 
-    <source src="term_structure.webm"></source> 
-</video>
 
 
 
