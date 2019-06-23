@@ -4,6 +4,7 @@ permalink: /qf/
 title: "Quantitative Finance Projects"
 author_profile: true
 toc: true
+background-image: url('../Images/pic1.jpg') no-repeat;
 ---
 Hello 
 My Prjects are:
