@@ -10,23 +10,25 @@ toc: true
 - [Introduction](#Introduction)
 - [Extract and visualize raw data](#Extract)
 - [Term Structure](#Term)
-- [Stationary vs. non-stationary data](#Stationary)
+- [Non-stationary vs. stationary time series](#Stationary)
 - [Principle Componenet Analysis](#Principle)
 
 
 
-## Introduction <a name="Introduction"/> ([Return to Top](#toc))
+## Introduction <a name="Introduction"/> 
+[Return to Top](#toc)
 
 
 LIBOR, which stands for London Interbank Offered Rate, is the average interbank interest rate at which a selection of banks on the London money market are prepared to lend to one another. LIBOR comes in 7 maturities (from overnight to 12 months) and in 5 different currencies including the US dollar, the euro, the British pound, the Japanese yen, and the Swiss franc. The official LIBOR interest rates are announced once per working day at around 11:45 a.m. 
 
 LIBOR is also the basis for consumer loans in countries around the world, so it impacts consumers just as much as it does financial institutions. The interest rates on various financial products such as credit cards, car loans, and adjustable rate mortgages fluctuate based on the LIBOR rate. This change in rate helps determine the ease of borrowing between banks and consumers.
 
-In this project I will present some statistical analysis on the LIBOR interest rates for various CAD and USD maturities obtained from [FRED](https://fred.stlouisfed.org/) website.
+In this project I will present some statistical analysis on the LIBOR interest rates for various USD maturities obtained from [FRED](https://fred.stlouisfed.org/) website.
 
 
 
-## Extract and visualize data <a name="Extract"/> ([Return to Top](#toc))
+## Extract and visualize data <a name="Extract"/> 
+[Return to Top](#toc)
 
 Here is the list of libraries that I will be using for this project:
 ``` r
@@ -58,21 +60,14 @@ get_data <- function(ticker,date_range)
 
 ### For this example I will be using data from 1998 to 2012
 date_range='199801/201112'
-#USD
+
+
 USDON=get_data("USDONTD156N", date_range)
 USD1M=get_data("USD1MTD156N", date_range)
 USD3M=get_data("USD3MTD156N", date_range)
 USD6M=get_data("USD6MTD156N", date_range)
 USD9M=get_data("USD9MTD156N", date_range)
 USD12M=get_data("USD12MD156N", date_range)
-
-#CAD
-CADON=get_data("CADONTD156N", date_range)
-CAD1M=get_data("CAD1MTD156N", date_range)
-CAD3M=get_data("CAD3MTD156N", date_range)
-CAD6M=get_data("CAD6MTD156N", date_range)
-CAD9M=get_data("CAD9MTD156N", date_range)
-CAD12M=get_data("CAD12MD156N", date_range)
 ```
 
 Here is the graph for USD LIBOR Interest Rates for different maturities:
@@ -97,32 +92,10 @@ windows()
 print(A)
 ```
 <img src="{{ site.url }}{{ site.baseurl }}/images/LIBOR/IR_USD.jpeg">
-And this graph for CAD LIBOR Interest Rates for different maturites:
-```r
-B=ggplot() +
-  geom_line(data = CADON, aes(x=index(CADON), y=CADON, col="Over Night Rate"),size=1)+
-  geom_line(data = CAD1M, aes(x=index(CAD1M), y=CAD1M, col="1 Month Rate"),size=1)+
-  geom_line(data = CAD3M, aes(x=index(CAD3M), y=CAD3M, col="3 Months Rate"), size=1)+
-  geom_line(data = CAD6M, aes(x=index(CAD6M), y=CAD6M, col="6 Months Rate"), size=1)+
-  geom_line(data = CAD9M, aes(x=index(CAD9M), y=CAD9M, col="9 Months Rate"), size=1)+
-  geom_line(data = CAD12M, aes(x=index(CAD12M), y=CAD12M, col="12 Months Rate"),size=1)+
-  ylab("Interest Rate")+
-  xlab("Date")+ylim(0, 10)+
-  theme_gray(base_size = 14)+
-  theme(axis.text.y = element_text(size=14, angle = 90 , colour = "black"))+
-  theme(axis.text.x = element_text(size=14, colour = 'black'))+
-  theme(legend.position = c(0.85, 0.9))+
-  theme(legend.background = element_rect(fill="lightblue", linetype="solid", colour ="darkblue"))+
-  theme(legend.title=element_blank())+
-  theme(legend.text=element_text(size=14))
-windows()
-print(B)
-```
-<img src="{{ site.url }}{{ site.baseurl }}/images/LIBOR/IR_CAD.jpeg">
 
+## Term Structure <a name="Term"/> 
+[Return to Top](#toc)
 
-
-## Term Structure <a name="Term"/> ([Return to Top](#toc))
 Term structure of interest rates is the relationship between interest rates and different maturities. The term structure reflects expectations of market participants about future changes in interest rates. The term structure graph can have three different outcomes as depicted in the figure below. If there is a highly positive normal curve, it is a signal investors believe future economic growth to be strong and inflation high. If there is a highly negative inverted curve, it is a signal investors believe future economic growth to be sluggish and inflation low. A flat yield curve means investors are unsure about the future.
 <img src="{{ site.url }}{{ site.baseurl }}/images/LIBOR/term_structure.jpg">
 
@@ -230,7 +203,6 @@ master_USD_sd=t(master_USD_sd)
 master_USD=data.frame(master_USD)
 master_USD_sd=data.frame(master_USD_sd)
 ```
-
 To plot the term structure use the following code:
 Each sequence in the code represents a month of the year. The curve color changes to red if it is inverted. It can be seen that generally the curve changes to red before any of the major recessions in the history.
 
@@ -308,3 +280,18 @@ for (i in 1:L){
     <source src="term_structure.mp4"></source> 
     <source src="term_structure.webm"></source> 
 </video>
+
+
+
+## Non-stationary vs. stationary time series <a name="Stationary"/> 
+[Return to Top](#toc)
+The data obtained from FRED website is known as non-stationary time series data, because the mean, varience, and autocorrelation change over time. If the time series is non-stationary, we can often transform it to stationarity by differencing the data. That is, given the series Zt, we create the new series:
+
+'Y_i=Z_i -Z_i-1'
+
+The differenced data will contain one less point than the original data. Although you can difference the data more than once, one difference is usually sufficient.
+
+## Principle Component Analysis <a name="Principle"/> 
+[Return to Top](#toc)
+
+This section applies Principal Component Analysis (PCA) to LIBOR interest rate and shows that the first 3 principal components correspond to term structure, slope, and curvature respectively.
