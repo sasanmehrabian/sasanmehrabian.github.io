@@ -1,6 +1,13 @@
 ---
 layout: home
 author_profile: true
+layouts_gallery:
+  - url: /images/ml.jpeg
+    image_path: /images/ml.jpeg
+    alt: "Data Science"
+  - url: /images/qf.jpeg
+    image_path: /images/qf.jpeg
+    alt: "Quantitatice Finance"
 header: 
   image: "/images/Toronto2.jpg"
 ---

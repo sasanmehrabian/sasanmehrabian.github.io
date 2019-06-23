@@ -302,7 +302,7 @@ print(C)
 
 This section applies Principal Component Analysis (PCA) to LIBOR interest rate and shows that the first 3 principal components correspond to term structure, slope, and curvature respectively. For purpose of this study, I will emphasize my analysis on before and after the housing bubble. Therefore, I will change the data range from 2007 to 2012. So I when I extract the data from FRED website, I will change the date_range to '200701/201112'.
 
-Principle component analysis is done on stationary data. Consequently I will create a master data frame that cbinds all the 1 day increment data together:
+Principle component analysis is done on stationary data. Consequently I will create a master dataframe (USD_1D_comb) that cbinds all the 1 day increment data together:
 ``` r
 USD_1D_comb<-cbind(USDON_1D,USD1M_1D,USD3M_1D, USD6M_1D, USD9M_1D,USD12M_1D)
 colnames(USD_1D_comb) <- c("OverNight","1Month", "3Months", "6Months", "9Months", "12Months")
