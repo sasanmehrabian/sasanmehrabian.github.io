@@ -11,7 +11,7 @@ header:
 ##  <a name="toc"/>
 - [Introduction](#Introduction)
 - [Extract and visualize raw data](#Extract)
-- [Term Structure](#Term)
+- [Term structure](#Term)
 - [Non-stationary vs. stationary time series](#Stationary)
 - [Principle Componenet Analysis](#Principle)
 
