@@ -13,4 +13,6 @@ toc: true
 <h3>Project Summary<h3>
 >Used Python to extract data from large SQL database. 
 
+<img src="{{ site.url }}{{ site.baseurl }}/images/LIBOR/ds.jpeg">
+
 
