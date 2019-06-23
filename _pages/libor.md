@@ -124,4 +124,5 @@ D=ggplot() +
     
 ggarrange(A,B,C,D)
 ```
-<img src="{{ site.url }}{{ site.baseurl }}/images/LIBOR/IR.jpg" alt="my description">
+dsds
+<img src="{{ site.url }}{{ site.baseurl }}/images/LIBOR/IR.jpeg" alt="my description">
