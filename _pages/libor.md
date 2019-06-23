@@ -285,9 +285,10 @@ for (i in 1:L){
 
 ## Non-stationary vs. stationary time series <a name="Stationary"/> 
 [Return to Top](#toc)
+
 The data obtained from FRED website is known as non-stationary time series data, because the mean, varience, and autocorrelation change over time. If the time series is non-stationary, we can often transform it to stationarity by differencing the data. That is, given the series $Z_t$, we create the new series:
 
-'Y_i=Z_i -Z_i-1'
+$$Y_i=Z_i -Z_i-1$$
 
 The differenced data will contain one less point than the original data. Although you can difference the data more than once, one difference is usually sufficient.
 
