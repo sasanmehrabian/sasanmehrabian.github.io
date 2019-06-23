@@ -4,6 +4,7 @@ permalink: /libor/
 title: "LIBOR Interest Rates Analysis"
 author_profile: true
 toc: true
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
 ---
 
 - [Introduction](#Introduction)
@@ -269,6 +270,7 @@ for (i in 1:L){
 }
 ```
 <video src="term_structure.mp4" width="320" height="200" controls preload></video>
+
 <video width="320" height="200" controls preload> 
     <source src="term_structure.mp4"></source> 
     <source src="term_structure.webm"></source> 
