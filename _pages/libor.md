@@ -6,17 +6,18 @@ author_profile: true
 toc: true
 
 ---
-
+#Table of Content <a name="toc"/>
 - [Introduction](#Introduction)
-- [Extrac and visualize raw data](#Extract_data)
-- [Term Structure]
-- [Stationery vs. non-stationery data]
-- [Principle Componenet Analysis]
+- [Extrac and visualize raw data](#Extract)
+- [Term Structure](#Term)
+- [Stationary vs. non-stationary data](#Stationary)
+- [Principle Componenet Analysis](#Principle)
 
 
 
-## Introduction <a name="Introduction"/>
-
+## Introduction <a name="Introduction"/> 
+[Return to Top](#toc)
+\n
 
 LIBOR, which stands for London Interbank Offered Rate, is the average interbank interest rate at which a selection of banks on the London money market are prepared to lend to one another. LIBOR comes in 7 maturities (from overnight to 12 months) and in 5 different currencies including the US dollar, the euro, the British pound, the Japanese yen, and the Swiss franc. The official LIBOR interest rates are announced once per working day at around 11:45 a.m. 
 
@@ -26,7 +27,7 @@ In this project I will present some statistical analysis on the LIBOR interest r
 
 
 
-## Extract and visualize data
+## Extract and visualize data <a name="Extract"/>
 
 Here is the list of libraries that I will be using for this project:
 ``` r
@@ -122,7 +123,7 @@ print(B)
 
 
 
-## Term Structure
+## Term Structure <a name="Term"/>
 Term structure of interest rates is the relationship between interest rates and different maturities. The term structure reflects expectations of market participants about future changes in interest rates. The term structure graph can have three different outcomes as depicted in the figure below. If there is a highly positive normal curve, it is a signal investors believe future economic growth to be strong and inflation high. If there is a highly negative inverted curve, it is a signal investors believe future economic growth to be sluggish and inflation low. A flat yield curve means investors are unsure about the future.
 <img src="{{ site.url }}{{ site.baseurl }}/images/LIBOR/term_structure.jpg">
 
