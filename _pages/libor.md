@@ -4,7 +4,7 @@ permalink: /libor/
 title: "LIBOR Interest Rates Analysis"
 author_profile: true
 toc: true
-MathJax="true"
+mathJax="true"
 ---
 ##  <a name="toc"/>
 - [Introduction](#Introduction)
