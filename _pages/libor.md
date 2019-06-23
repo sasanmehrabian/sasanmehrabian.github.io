@@ -46,7 +46,6 @@ In order to get the LIBOR IR, I defined a function that requires the ticker of t
 ``` r
 setDefaults(getSymbols, src="FRED")
 "getSymbols.warning4.0"=FALSE
-
 get_data <- function(ticker,date_range)
 {
   t=getSymbols(as.character(ticker), env=.GlobalEnv, auto.assign = F)
@@ -56,10 +55,8 @@ get_data <- function(ticker,date_range)
   t= t[!is.na(t),]        # remove the NA rows
   return (t)
 }  
-
-### For this example I will be using data from 1998 to 2012
+### For this example I will be using data from 1986 to 2019
 date_range='199801/201112'
-
 
 USDON=get_data("USDONTD156N", date_range)
 USD1M=get_data("USD1MTD156N", date_range)
@@ -68,7 +65,6 @@ USD6M=get_data("USD6MTD156N", date_range)
 USD9M=get_data("USD9MTD156N", date_range)
 USD12M=get_data("USD12MD156N", date_range)
 ```
-
 Here is the graph for USD LIBOR Interest Rates for different maturities:
 ```r  
 A=ggplot() +
@@ -125,7 +121,6 @@ USD1M_sd<- aggregate(USD1M_f$IR,by=list(USD1M_f$V3),FUN=sd)
 USD1M_mean=cbind(USD1M_mean, USD1M_sd[,2])
 USD1M_mean[,4]="USD1M"
 colnames(USD1M_mean) <- c('DATE','MEAN_IR','ST_DEV', 'MATURITY')
-
 # USD 3 Month
 USD3M_f=fortify(USD3M)
 USD3M_f[,3] <- as.factor(format(as.Date(USD3M_f$Index, format="%Y/%m/%d"),"%Y%m"))
@@ -134,7 +129,6 @@ USD3M_sd<- aggregate(USD3M_f$IR,by=list(USD3M_f$V3),FUN=sd)
 USD3M_mean=cbind(USD3M_mean, USD3M_sd[,2])
 USD3M_mean[,4]="USD3M"
 colnames(USD3M_mean) <- c('DATE','MEAN_IR','ST_DEV', 'MATURITY')
-
 # USD 6 Month
 USD6M_f=fortify(USD6M)
 USD6M_f[,3] <- as.factor(format(as.Date(USD6M_f$Index, format="%Y/%m/%d"),"%Y%m"))
@@ -143,7 +137,6 @@ USD6M_sd<- aggregate(USD6M_f$IR,by=list(USD6M_f$V3),FUN=sd)
 USD6M_mean=cbind(USD6M_mean, USD6M_sd[,2])
 USD6M_mean[,4]="USD6M"
 colnames(USD6M_mean) <- c('DATE','MEAN_IR','ST_DEV', 'MATURITY')
-
 # USD 9 Month
 USD9M_f=fortify(USD9M)
 USD9M_f[,3] <- as.factor(format(as.Date(USD9M_f$Index, format="%Y/%m/%d"),"%Y%m"))
@@ -152,7 +145,6 @@ USD9M_sd<- aggregate(USD9M_f$IR,by=list(USD9M_f$V3),FUN=sd)
 USD9M_mean=cbind(USD9M_mean, USD9M_sd[,2])
 USD9M_mean[,4]="USD9M"
 colnames(USD9M_mean) <- c('DATE','MEAN_IR','ST_DEV', 'MATURITY')
-
 # USD 12 Month
 USD12M_f=fortify(USD12M)
 USD12M_f[,3] <- as.factor(format(as.Date(USD12M_f$Index, format="%Y/%m/%d"),"%Y%m"))
@@ -161,7 +153,6 @@ USD12M_sd<- aggregate(USD12M_f$IR,by=list(USD12M_f$V3),FUN=sd)
 USD12M_mean=cbind(USD12M_mean, USD12M_sd[,2])
 USD12M_mean[,4]="USD12M"
 colnames(USD12M_mean) <- c('DATE','MEAN_IR','ST_DEV', 'MATURITY')
-
 # Now merge all "mean" data by year/month
 master_USD <- merge(USDON_mean[,1:2], USD1M_mean[,1:2], by='DATE', all=T)
 colnames(master_USD) <- c('DATE','USDON','USD1M')
@@ -179,7 +170,6 @@ master_USD<-data.frame(master_USD, row.names=master_USD[,1])
 master_USD<-subset(master_USD[,2:7])
 # transpose the df
 master_USD=t(master_USD)
-
 # Now merge all "standard deviation" data by year/month
 master_USD_sd <- merge(USDON_mean[c(1,3)], USD1M_mean[c(1,3)], by='DATE', all=T)
 colnames(master_USD_sd) <- c('DATE','USDON_sd','USD1M_sd' )
@@ -197,7 +187,6 @@ master_USD_sd<-data.frame(master_USD_sd, row.names=master_USD_sd[,1])
 master_USD_sd<-subset(master_USD_sd[,2:7])
 # transpose the df
 master_USD_sd=t(master_USD_sd)
-
 #convert both matrices to data frames:
 master_USD=data.frame(master_USD)
 master_USD_sd=data.frame(master_USD_sd)
@@ -273,9 +262,7 @@ for (i in 1:L){
   ggsave(filename=paste(names[i],".png",sep=""), path = "C:\\Users\\User\\Google Drive\\R")  
 }
 ```
-<img src="{{ site.url }}{{ site.baseurl }}/images/LIBOR/term_structure.gif">
-
-
+The GIF image presented at the top of this page is the result of combining all the term structure figures.
 
 ## Non-stationary vs. stationary time series <a name="Stationary"/> 
 [Return to Top](#toc)
@@ -307,10 +294,61 @@ C=ggplot() +
   theme(axis.text.x = element_text(size=14, colour = 'black'))
 print(C)
 ```
-<img src="{{ site.url }}{{ site.baseurl }}/images/LIBOR/1d_3M.jpg">
+<img src="{{ site.url }}{{ site.baseurl }}/images/LIBOR/1d_3M.jpeg">
 
 
 ## Principle Component Analysis <a name="Principle"/> 
 [Return to Top](#toc)
 
-This section applies Principal Component Analysis (PCA) to LIBOR interest rate and shows that the first 3 principal components correspond to term structure, slope, and curvature respectively.
+This section applies Principal Component Analysis (PCA) to LIBOR interest rate and shows that the first 3 principal components correspond to term structure, slope, and curvature respectively. For purpose of this study, I will emphasize my analysis on before and after the housing bubble. Therefore, I will change the data range from 2007 to 2012. So I when I extract the data from FRED website, I will change the date_range to '200701/201112'.
+
+Principle component analysis is done on stationary data. Consequently I will create a master data frame that cbinds all the 1 day increment data together:
+``` r
+USD_1D_comb<-cbind(USDON_1D,USD1M_1D,USD3M_1D, USD6M_1D, USD9M_1D,USD12M_1D)
+colnames(USD_1D_comb) <- c("OverNight","1Month", "3Months", "6Months", "9Months", "12Months")
+# computes the PC score for each data point
+USD_1D_comb <- USD_1D_comb[complete.cases(USD_1D_comb)] 
+# computes the PC rotation for each maturity
+USD_1D_pca <- prcomp(USD_1D_comb,center=TRUE,scale=TRUE)
+# get the summary of the PCA
+summary(USD_1D_pca)
+str(USD_1D_pca)
+# Plot a bar plot to show the importance of each component:
+Var_1D=summary(USD_1D_pca)$importance[3,]
+Var_1D=data.frame(Var_1D)
+A=ggplot(data=Var_1D, aes(x=index(Var_1D), y=Var_1D*100)) +
+    geom_bar(stat="identity")+
+    xlab('Principle Components') +
+    ylab('Cumulative proportion of Variance')+
+    scale_x_continuous(breaks=1:6, labels=c("PC1","PC2","PC3","PC4","PC5","PC6"))+
+    theme(axis.text=element_text(size=12, colour = "black"))+
+    theme(axis.title=element_text(size=12, face="bold", colour = "black"))+
+    ggtitle("1 Day Increments")+
+    theme(plot.title = element_text(face='bold', colour='blue',size=30))
+print(A)
+```
+<img src="{{ site.url }}{{ site.baseurl }}/images/LIBOR/PCA1.jpeg">
+```r
+EV_1D=data.frame(USD_1D_pca$rotation)
+B= ggplot(EV_1D)+
+  geom_line(aes(x=index(EV_1D), y=PC1, col='PC1'), size=1)+geom_point(aes(x=index(EV_1D), y=PC1))+
+  geom_line(aes(x=index(EV_1D), y=PC2, col='PC2'), size=1)+geom_point(aes(x=index(EV_1D), y=PC2))+
+  geom_line(aes(x=index(EV_1D), y=PC3, col='PC3'),size=1)+geom_point(aes(x=index(EV_1D), y=PC3))+
+  scale_x_continuous(breaks=1:6, labels=c("OverNight","1Month", "3Months", "6Months", "9Months", "12Months"))+
+  xlab("Maturity")+
+  ylab("EigenVectors")+
+  ggtitle("Eigenvectors")+
+  theme(axis.text=element_text(size=12, face="bold", colour = "black"))+
+  theme(axis.title=element_text(size=14, face="bold", colour = "black"))+
+  theme(legend.position = c(0.9, 0.9))+
+  theme(legend.background = element_rect(fill="lightblue", linetype="solid", colour ="darkblue"))+
+  theme(legend.title=element_blank())+
+  theme(legend.text=element_text(size=14))+
+  theme(plot.title = element_text(face='bold', colour='blue',size=30))
+print(B)
+```
+<img src="{{ site.url }}{{ site.baseurl }}/images/LIBOR/PCA2.jpeg">
+```r
+fviz_pca_var(USD_1D_pca)
+```
+<img src="{{ site.url }}{{ site.baseurl }}/images/LIBOR/PCA3.jpeg">
