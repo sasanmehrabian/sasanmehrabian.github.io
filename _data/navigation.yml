@@ -2,8 +2,10 @@
 main:
     - title: "Quantitative Finance"
       url: /qf/
-    - title: "Data Science"
-      url: /ds/
+    - title: "Machine Learning"
+      url: /ml/
+    - title: "Data Analysis"
+      url: /da/
     - title: "About"
       url: /about/
 
