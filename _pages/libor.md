@@ -4,6 +4,8 @@ permalink: /libor/
 title: "LIBOR Interest Rates Analysis"
 author_profile: true
 toc: true
+header: 
+  image: "/images/LIBOR/term_structure.GIF"
 
 ---
 ##  <a name="toc"/>
@@ -274,6 +276,7 @@ for (i in 1:L){
   ggsave(filename=paste(names[i],".png",sep=""), path = "C:\\Users\\User\\Google Drive\\R")  
 }
 ```
+<img src="{{ site.url }}{{ site.baseurl }}/images/LIBOR/term_structure.GIF">
 <video src="term_structure.mp4" width="320" height="200" controls preload></video>
 
 <video width="320" height="200" controls preload> 
@@ -286,11 +289,35 @@ for (i in 1:L){
 ## Non-stationary vs. stationary time series <a name="Stationary"/> 
 [Return to Top](#toc)
 
-The data obtained from FRED website is known as non-stationary time series data, because the mean, varience, and autocorrelation change over time. If the time series is non-stationary, we can often transform it to stationarity by differencing the data. That is, given the series $$Z_t$$, we create the new series:
+The data obtained from FRED website is known as non-stationary time series data, because the mean, varience, and covariance change over time. If the time series is non-stationary, we can often transform it to stationarity by differencing the data. That is, given the series Z_(t), we create the new series:
 
-$$Y_i=Z_i -Z_i-1$$
+Y_(i)=Z_(i) -Z_(i-1)
 
-The differenced data will contain one less point than the original data. Although you can difference the data more than once, one difference is usually sufficient.
+The differenced data will contain one less point than the original data. Although you can difference the data more than once, one difference is usually sufficient. So to summarize, a stationary time series is the one for which the properties (namely mean, variance and covariance) do not depend on time. Most Statistical and Financial models and analysis require stationary time series.
+
+The 1 day increment (stationary time series) of USD LIBOR rates can be obtaines in the following manner:
+```r
+USDON_1D=Delt(USDON, k=1)
+USD1M_1D=Delt(USD1M, k=1)
+USD3M_1D=Delt(USD3M, k=1)
+USD6M_1D=Delt(USD6M, k=1)
+USD9M_1D=Delt(USD9M, k=1)
+USD12M_1D=Delt(USD12M, k=1)
+```
+For example the 3 Month LIBOR interest rate for 1 day increment is:
+```r
+#plot
+C=ggplot() +
+  geom_line(data = USD3M_1D, aes(x=index(USD3M_1D), y=USD3M_1D), size=1)+
+  ylab("Interest Rate")+
+  xlab("Date")+
+  theme_gray(base_size = 14)+
+  theme(axis.text.y = element_text(size=14, angle = 90 , colour = "black"))+
+  theme(axis.text.x = element_text(size=14, colour = 'black'))
+print(C)
+```
+<img src="{{ site.url }}{{ site.baseurl }}/images/LIBOR/1d_3M.jpg">
+
 
 ## Principle Component Analysis <a name="Principle"/> 
 [Return to Top](#toc)
