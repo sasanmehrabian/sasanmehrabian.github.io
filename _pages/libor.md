@@ -5,18 +5,29 @@ title: "LIBOR Interest Rates Analysis"
 author_profile: true
 toc: true
 ---
-# 1. Introduction
-# 2. Extract data
-# 3. 
 
-## 1. Introduction
+- [Introduction](#heading)
+- [Extract data](#heading-1)
+
+
+# Heading levels
+
+> This is a fixture to test heading levels
+
+<!-- toc -->
+
+## Introduction
+
+
 LIBOR, which stands for London Interbank Offered Rate, is the average interbank interest rate at which a selection of banks on the London money market are prepared to lend to one another. LIBOR comes in 7 maturities (from overnight to 12 months) and in 5 different currencies including the US dollar, the euro, the British pound, the Japanese yen, and the Swiss franc. The official LIBOR interest rates are announced once per working day at around 11:45 a.m. 
 
 LIBOR is also the basis for consumer loans in countries around the world, so it impacts consumers just as much as it does financial institutions. The interest rates on various credit products such as credit cards, car loans, and adjustable rate mortgages fluctuate based on the interbank rate. This change in rate helps determine the ease of borrowing between banks and consumers.
 
 In this project I will present some statistical analysis on the LIBOR interest rates for various CAD and USD maturities obtained from [FRED](https://fred.stlouisfed.org/) website.
 
-## 2. Extract data
+
+
+## Extract data
 
 Here is the list of libraries that I will be using for this project:
 ``` r
