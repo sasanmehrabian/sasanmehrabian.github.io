@@ -16,7 +16,7 @@ toc: true
   {% endfor %}
 {% endfor %}
 
-Hello
+Hello My friend
 
 R code block
 ''' R
