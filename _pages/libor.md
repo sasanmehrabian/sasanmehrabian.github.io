@@ -5,7 +5,7 @@ title: "LIBOR Interest Rates Analysis"
 author_profile: true
 toc: true
 header: 
-  image: "/images/LIBOR/term_structure.gif"
+  image: "/images/LIBOR/term_structure.gif"=640x360
 
 ---
 ##  <a name="toc"/>
