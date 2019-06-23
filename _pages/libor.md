@@ -5,6 +5,10 @@ title: "LIBOR Interest Rates Analysis"
 author_profile: true
 toc: true
 ---
+# 1. Introduction
+# 2. Extract data
+# 3. 
+
 ## 1. Introduction
 LIBOR, which stands for London Interbank Offered Rate, is the average interbank interest rate at which a selection of banks on the London money market are prepared to lend to one another. LIBOR comes in 7 maturities (from overnight to 12 months) and in 5 different currencies including the US dollar, the euro, the British pound, the Japanese yen, and the Swiss franc. The official LIBOR interest rates are announced once per working day at around 11:45 a.m. 
 
@@ -102,7 +106,4 @@ You can visualize the interest rates for other maturities using the same code.
 
 <video controls>
   <source src="term_structure.mp4" type="video/mp4">
-  <source src="term_structure.webm" type="video/webm">
-  <p>Your browser doesn't support HTML5 video. Here is
-     a <a href="term_structure.mp4">link to the video</a> instead.</p>
 </video>
