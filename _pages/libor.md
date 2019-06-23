@@ -27,7 +27,7 @@ library(factoextra)
 require(gridExtra)
 ```
 
-In order to get the LIBOR IR I defined a function that requires the ticker of the maturity from FRED website and the date range. 
+In order to get the LIBOR IR, I defined a function that requires the ticker of the maturity from FRED website and the date range. 
 ``` r
 setDefaults(getSymbols, src="FRED")
 "getSymbols.warning4.0"=FALSE
@@ -59,10 +59,10 @@ CAD3M=get_data("CAD3MTD156N", date_range)
 CAD6M=get_data("CAD6MTD156N", date_range)
 CAD9M=get_data("CAD9MTD156N", date_range)
 CAD12M=get_data("CAD12MD156N", date_range)
+```
 
-
-
-  
+Here is the plot for USD and CAD over night rates:
+```r  
 A=ggplot() + 
       geom_line(data = USDON, aes(x = index(USDON), y =USDON, col="USD", group=1), size=1.5) +
       geom_line(data = CADON, aes(x = index(CADON), y =CADON, col="CAD", group=1),size=1.5) +
@@ -76,38 +76,12 @@ A=ggplot() +
       theme(legend.title=element_blank())+
       theme(legend.position = c(0.9, 0.9))+
       theme(legend.background = element_rect(fill="lightblue", linetype="solid", colour ="darkblue"))
-    
-    
-B=ggplot() + 
-      geom_line(data = USD1M, aes(x = index(USD1M), y =USD1M, col="USD", group=1), size=1.5) +
-      geom_line(data = CAD1M, aes(x = index(CAD1M), y =CAD1M, col="CAD", group=1),size=1.5) +
-      xlab('Date') +
-      ylab('IR %')+
-      ggtitle("1 Month Interest Rates")+
-      theme(text = element_text(size=20))+
-      theme(axis.text.y = element_text(size=15, angle = 90, face = "bold" , colour = "black"))+
-      theme(axis.text.x = element_text(size=15, face= "bold", colour = 'black'))+
-      theme(plot.title = element_text(size = 20, face = "bold"))+  
-      theme(legend.title=element_blank())+
-      theme(legend.position = c(0.9, 0.9))+
-      theme(legend.background = element_rect(fill="lightblue", linetype="solid", colour ="darkblue"))
-    
-    
-C=ggplot() + 
-      geom_line(data = USD6M, aes(x = index(USD6M), y =USD6M, col="USD", group=1), size=1.5) +
-      geom_line(data = CAD6M, aes(x = index(CAD6M), y =CAD6M, col="CAD", group=1),size=1.5) +
-      xlab('Date') +
-      ylab('IR %')+
-      ggtitle("6 Months Interest Rates")+
-      theme(text = element_text(size=20))+
-      theme(axis.text.y = element_text(size=15, angle = 90, face = "bold" , colour = "black"))+
-      theme(axis.text.x = element_text(size=15, face= "bold", colour = 'black'))+
-      theme(plot.title = element_text(size = 20, face = "bold"))+  
-      theme(legend.title=element_blank())+
-      theme(legend.position = c(0.9, 0.9))+
-      theme(legend.background = element_rect(fill="lightblue", linetype="solid", colour ="darkblue"))
-    
-    
+
+print(A)
+```
+<img src="{{ site.url }}{{ site.baseurl }}/images/LIBOR/IR_ON.jpeg">
+And the plot for USD and CAD for 12 months rates
+```r
 D=ggplot() + 
       geom_line(data = USD12M, aes(x = index(USD12M), y =USD12M, col="USD", group=1), size=1.5) +
       geom_line(data = CAD12M, aes(x = index(CAD12M), y =CAD12M, col="CAD", group=1),size=1.5) +
@@ -121,8 +95,7 @@ D=ggplot() +
       theme(legend.title=element_blank())+
       theme(legend.position = c(0.9, 0.9))+
       theme(legend.background = element_rect(fill="lightblue", linetype="solid", colour ="darkblue"))
-    
-ggarrange(A,B,C,D)
+print(B)
 ```
-dsds
-<img src="{{ site.url }}{{ site.baseurl }}/images/LIBOR/IR.jpeg" alt="my description">
+<img src="{{ site.url }}{{ site.baseurl }}/images/LIBOR/IR_12M.jpeg">
+You can visualize the interest rates for other maturities using the same code.
