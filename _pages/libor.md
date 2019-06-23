@@ -4,8 +4,6 @@ permalink: /libor/
 title: "LIBOR Interest Rates Analysis"
 author_profile: true
 toc: true
-
-
 ---
 ##  <a name="toc"/>
 - [Introduction](#Introduction)
