@@ -6,8 +6,8 @@ author_profile: true
 toc: true
 ---
 
-- [Introduction](#heading)
-- [Extract data](#heading-1)
+- [Introduction](#Introduction)
+- [Extract data](#Extract_data)
 
 
 # Heading levels
@@ -16,7 +16,7 @@ toc: true
 
 <!-- toc -->
 
-## Introduction
+## Introduction (#Introduction)
 
 
 LIBOR, which stands for London Interbank Offered Rate, is the average interbank interest rate at which a selection of banks on the London money market are prepared to lend to one another. LIBOR comes in 7 maturities (from overnight to 12 months) and in 5 different currencies including the US dollar, the euro, the British pound, the Japanese yen, and the Swiss franc. The official LIBOR interest rates are announced once per working day at around 11:45 a.m. 
