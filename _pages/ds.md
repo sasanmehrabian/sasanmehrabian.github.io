@@ -1,6 +1,6 @@
 ---
 layout: home
-permalink: /da/
+permalink: /ds/
 title: "Data Science Projects"
 toc: true
 ---
