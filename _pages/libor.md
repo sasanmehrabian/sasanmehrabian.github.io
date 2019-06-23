@@ -15,7 +15,7 @@ toc: true
 
 
 
-## Introduction
+## Introduction <a name="Introduction"/>
 
 
 LIBOR, which stands for London Interbank Offered Rate, is the average interbank interest rate at which a selection of banks on the London money market are prepared to lend to one another. LIBOR comes in 7 maturities (from overnight to 12 months) and in 5 different currencies including the US dollar, the euro, the British pound, the Japanese yen, and the Swiss franc. The official LIBOR interest rates are announced once per working day at around 11:45 a.m. 
@@ -77,17 +77,50 @@ CAD12M=get_data("CAD12MD156N", date_range)
 
 Here is the graph for USD LIBOR Interest Rates for different maturities:
 ```r  
-A=ggplot() + 
-      
+A=ggplot() +
+  geom_line(data = USDON, aes(x=index(USDON), y=USDON, col="Over Night Rate"),size=1)+
+  geom_line(data = USD1M, aes(x=index(USD1M), y=USD1M, col="1 Month Rate"),size=1)+
+  geom_line(data = USD3M, aes(x=index(USD3M), y=USD3M, col="3 Months Rate"), size=1)+
+  geom_line(data = USD6M, aes(x=index(USD6M), y=USD6M, col="6 Months Rate"), size=1)+
+  geom_line(data = USD9M, aes(x=index(USD9M), y=USD9M, col="9 Months Rate"), size=1)+
+  geom_line(data = USD12M, aes(x=index(USD12M), y=USD12M, col="12 Months Rate"),size=1)+
+  ylab("Interest Rate")+
+  xlab("Date")+ylim(0, 10)+
+  theme_gray(base_size = 14)+
+  theme(axis.text.y = element_text(size=14, angle = 90 , colour = "black"))+
+  theme(axis.text.x = element_text(size=14, colour = 'black'))+
+  theme(legend.position = c(0.85, 0.9))+
+  theme(legend.background = element_rect(fill="lightblue", linetype="solid", colour ="darkblue"))+
+  theme(legend.title=element_blank())+
+  theme(legend.text=element_text(size=14))
+windows()
 print(A)
 ```
-<img src="{{ site.url }}{{ site.baseurl }}/images/LIBOR/IR_ON.jpeg">
+<img src="{{ site.url }}{{ site.baseurl }}/images/LIBOR/IR_USD.jpeg">
 And this graph for CAD LIBOR Interest Rates for different maturites:
 ```r
-B=ggplot() + 
-     
+B=ggplot() +
+  geom_line(data = CADON, aes(x=index(CADON), y=CADON, col="Over Night Rate"),size=1)+
+  geom_line(data = CAD1M, aes(x=index(CAD1M), y=CAD1M, col="1 Month Rate"),size=1)+
+  geom_line(data = CAD3M, aes(x=index(CAD3M), y=CAD3M, col="3 Months Rate"), size=1)+
+  geom_line(data = CAD6M, aes(x=index(CAD6M), y=CAD6M, col="6 Months Rate"), size=1)+
+  geom_line(data = CAD9M, aes(x=index(CAD9M), y=CAD9M, col="9 Months Rate"), size=1)+
+  geom_line(data = CAD12M, aes(x=index(CAD12M), y=CAD12M, col="12 Months Rate"),size=1)+
+  ylab("Interest Rate")+
+  xlab("Date")+ylim(0, 10)+
+  theme_gray(base_size = 14)+
+  theme(axis.text.y = element_text(size=14, angle = 90 , colour = "black"))+
+  theme(axis.text.x = element_text(size=14, colour = 'black'))+
+  theme(legend.position = c(0.85, 0.9))+
+  theme(legend.background = element_rect(fill="lightblue", linetype="solid", colour ="darkblue"))+
+  theme(legend.title=element_blank())+
+  theme(legend.text=element_text(size=14))
+windows()
 print(B)
 ```
+<img src="{{ site.url }}{{ site.baseurl }}/images/LIBOR/IR_CAD.jpeg">
+
+
 
 ## Term Structure
 Term structure of interest rates is the relationship between interest rates and different maturities. The term structure reflects expectations of market participants about future changes in interest rates. The term structure graph can have three different outcomes as depicted in the figure below. If there is a highly positive normal curve, it is a signal investors believe future economic growth to be strong and inflation high. If there is a highly negative inverted curve, it is a signal investors believe future economic growth to be sluggish and inflation low. A flat yield curve means investors are unsure about the future.
@@ -199,7 +232,7 @@ master_USD_sd=data.frame(master_USD_sd)
 ```
 
 To plot the term structure use the following code:
-Each sequence in the code represents a month of the year. An if condition was written to change the curve color to red if it was inverted. It can be seen that generally the curve changes to red before the major recessions in the history.
+Each sequence in the code represents a month of the year. The curve color changes to red if it is inverted. It can be seen that generally the curve changes to red before any of the major recessions in the history.
 
 ```r
 names=colnames(master_USD)
