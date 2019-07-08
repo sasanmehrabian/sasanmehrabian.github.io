@@ -14,7 +14,9 @@ toc: true
 - [Principle Componenet Analysis](#Principle)
 
 
-<img src="{{ site.url }}{{ site.baseurl }}/images/LIBOR/term_structure.gif">
+<img src="{{ site.url }}{{ site.baseurl }}/images/LIBOR/term_structure.gif"> 
+<a name="term"/>
+
 ## Introduction <a name="Introduction"/> 
 [Return to Top](#toc)
 
@@ -89,13 +91,19 @@ print(A)
 ```
 <img src="{{ site.url }}{{ site.baseurl }}/images/LIBOR/IR_USD.jpeg">
 
+As you can see there is cycle of up and down in the LIBOR interest rates over the last 3 and half decades presented in the graph above. The cycle usually happens every decade. The stock markter crach, on what become known as Black Monday, took place in 1987. Global stock markets crashed, including in the US, where the Dow Jones index lost 508 points or 23% of its value. 
+
+In 1994 a sudden devaluation of the Mexican peso triggered what would become known as the Tequila crisis, which would become a massive interest rate crisis and result in a bond rout. Analysts regard the crisis as being triggered by a reversal in economic policy in Mexico, whereby the new president, Ernesto Zedillo, removed the tight currency controls his predecessor had put in place. While the controls had established a degree of market stability, they had also put an enormous strain on Mexico’s finances. Prior to Zedillo, banks had been lending large amounts of money at very low rates. With a rebellion in the poor southern state of Chiapas adding to Mexico’s risk premium, the peso’s value fell by nearly 50% in one week.
+
+In 1999-2000 was the dotcom bubble, which was preceded by a bull rush into technology and interenet related stocks. Individuals became millionaires overnight through companies such as eBay and Amazon. The financial crisis of 2007-2009 was the most-severe financial crisis since the Great Depression, and it wreaked havoc in financial markets around the world. Triggered by the collapse of the housing bubble in the U.S., the crisis resulted in the collapse of Lehman Brothers (one of the biggest investment banks in the world), brought many key financial institutions and businesses to the brink of collapse, and required government bailouts of unprecedented proportions. It took almost a decade for things to return to normal, wiping away millions of jobs and billions of dollars of income along the way.
+
 ## Term Structure <a name="Term"/> 
 [Return to Top](#toc)
 
 Term structure of interest rates is the relationship between interest rates and different maturities. The term structure reflects expectations of market participants about future changes in interest rates. The term structure graph can have three different outcomes as depicted in the figure below. If there is a highly positive normal curve, it is a signal investors believe future economic growth to be strong and inflation high. If there is a highly negative inverted curve, it is a signal investors believe future economic growth to be sluggish and inflation low. A flat yield curve means investors are unsure about the future.
 <img src="{{ site.url }}{{ site.baseurl }}/images/LIBOR/term_structure.jpg">
 
-In this section I will show how to get the term structure for USD LIBOR rates. It would be time consuming to plot the term structure for every single day. Therefore, for this project I have manupilated the data to get the term structure for every month of the year. That means, we have to aggregate the data for every month of the year and get the mean and standard deviation:
+In this section I will show how to get the term structure for USD LIBOR rates as illustrated in the top [figure](#term) of this page. It would be time consuming to plot the term structure for every single day. Therefore, for this project I have manupilated the data to get the term structure for every month of the year. That means, we have to aggregate the data for every month of the year and get the mean and standard deviation:
 ```r
 ### USD Over night:
 # extract the index (date)
