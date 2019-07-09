@@ -90,7 +90,7 @@ print(A)
 ```
 <img src="{{ site.url }}{{ site.baseurl }}/images/LIBOR/IR_USD.jpeg">
 
-As you can see there is cycle of up and down in the LIBOR interest rates over the last 3 and half decades presented in the graph above. The cycle usually happens every decade. The stock markter crach, on what become known as Black Monday, took place in 1987. Global stock markets crashed, including in the US, where the Dow Jones index lost 508 points or 23% of its value. 
+As you can see there is cycle of up and down in the LIBOR interest rates over the last 3 and half decades presented in the graph above. The cycle usually happens every decade. In 1987 the stock markter crashed, on what become known as Black Monday. Global stock markets crashed, including in the US, where the Dow Jones index lost 508 points or 23% of its value. 
 
 In 1994 a sudden devaluation of the Mexican peso triggered what would become known as the Tequila crisis, which would become a massive interest rate crisis and result in a bond rout. Analysts regard the crisis as being triggered by a reversal in economic policy in Mexico, whereby the new president, Ernesto Zedillo, removed the tight currency controls his predecessor had put in place. While the controls had established a degree of market stability, they had also put an enormous strain on Mexico’s finances. Prior to Zedillo, banks had been lending large amounts of money at very low rates. With a rebellion in the poor southern state of Chiapas adding to Mexico’s risk premium, the peso’s value fell by nearly 50% in one week.
 
