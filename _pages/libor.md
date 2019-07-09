@@ -11,7 +11,6 @@ toc: true
 - [Extract and visualize raw data](#Extract)
 - [Term structure](#Term)
 - [Non-stationary vs. stationary time series](#Stationary)
-- [Principle Componenet Analysis](#Principle)
 
 
 <img src="{{ site.url }}{{ site.baseurl }}/images/LIBOR/term_structure.gif"> 
@@ -95,7 +94,7 @@ As you can see there is cycle of up and down in the LIBOR interest rates over th
 
 In 1994 a sudden devaluation of the Mexican peso triggered what would become known as the Tequila crisis, which would become a massive interest rate crisis and result in a bond rout. Analysts regard the crisis as being triggered by a reversal in economic policy in Mexico, whereby the new president, Ernesto Zedillo, removed the tight currency controls his predecessor had put in place. While the controls had established a degree of market stability, they had also put an enormous strain on Mexico’s finances. Prior to Zedillo, banks had been lending large amounts of money at very low rates. With a rebellion in the poor southern state of Chiapas adding to Mexico’s risk premium, the peso’s value fell by nearly 50% in one week.
 
-In 1999-2000 was the dotcom bubble, which was preceded by a bull rush into technology and interenet related stocks. Individuals became millionaires overnight through companies such as eBay and Amazon. The financial crisis of 2007-2009 was the most-severe financial crisis since the Great Depression, and it wreaked havoc in financial markets around the world. Triggered by the collapse of the housing bubble in the U.S., the crisis resulted in the collapse of Lehman Brothers (one of the biggest investment banks in the world), brought many key financial institutions and businesses to the brink of collapse, and required government bailouts of unprecedented proportions. It took almost a decade for things to return to normal, wiping away millions of jobs and billions of dollars of income along the way.
+In 1999-2000 was the dotcom bubble, which was preceded by a bull rush into technology and interenet related stocks. Individuals became millionaires overnight through companies such as eBay and Amazon. Followed by that, was the financial crisis of 2007-2009 that was the most-severe financial crisis since the Great Depression, and it wreaked havoc in financial markets around the world. Triggered by the collapse of the housing bubble in the U.S., the crisis resulted in the collapse of Lehman Brothers (one of the biggest investment banks in the world), brought many key financial institutions and businesses to the brink of collapse, and required government bailouts of unprecedented proportions. It took almost a decade for things to return to normal, wiping away millions of jobs and billions of dollars of income along the way.
 
 ## Term Structure <a name="Term"/> 
 [Return to Top](#toc)
