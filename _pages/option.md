@@ -19,9 +19,10 @@ There are several models used for pricing options. Binomial tree and Black-Schol
 For instance, if the stock price ![S](https://latex.codecogs.com/gif.latex?S) rises, there is high probability that the price of a call option will rise and the price of a put option will fall. If the stock price goes down, the reverse will most likely happen to the price of the calls and puts. Intrinsic value is the amount by which the strike price of an option is in the money. It is the portion of an option's price not lost due to the passage of time.
 
 
-## Binomial Tree model < name="Binomial"/>
+## Binomial Tree model <a name="Binomial"/>
 In this model, consider a stock (with an initial price of ![S_0](https://latex.codecogs.com/gif.latex?S_0) undergoing a random walk. Over a time step ![delta_t](https://latex.codecogs.com/gif.latex?dt), the stock has a probability p of rising by a factor u, and a probability 1-p of  falling in price by a factor d. This is illustrated by the following diagram.
-<img src="{{ site.url }}{{ site.baseurl }}/images/options/Binomial.png"> 
+
+<img src="{{ site.url }}{{ site.baseurl }}/images/options/binomial.png"> 
 
 Cox, Ross and Rubenstein (CRR) suggested a method for calculating p, u and d. Over a small period of time, the binomial model acts similarly to an asset that exists in a risk neutral world. This results in the following equation, which implies that the effective return of the binomial model (on the right-hand side) is equal to the risk-free rate:
 ![CRR](https://latex.codecogs.com/gif.latex?pu&plus;%281-p%29d%3De%5E%7Br%20dt%7D)
