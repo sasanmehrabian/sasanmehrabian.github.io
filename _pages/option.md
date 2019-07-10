@@ -13,7 +13,8 @@ toc: true
 
 ## Introduction <a name="Introduction"/> 
 [Return to Top](#toc)
-There are several models used for pricing options. Binomial tree and Black-Scholes are the most common models. The current stock price (https://latex.codecogs.com/gif.latex?S), intrinsic value or the option strike price (https://latex.codecogs.com/gif.latex?K), Maturity lenth (https://latex.codecogs.com/gif.latex?T), risk-free interest rate (https://latex.codecogs.com/gif.latex?r), volatility (https://latex.codecogs.com/gif.latex?%5Csigma) are common factors for both models that determine the price of the option.
+
+There are several models used for pricing options. Binomial tree and Black-Scholes are the most common models. The current stock price ![S](https://latex.codecogs.com/gif.latex?S), intrinsic value or the option strike price ![K](https://latex.codecogs.com/gif.latex?K), Maturity lenth ![T](https://latex.codecogs.com/gif.latex?T), risk-free interest rate ![r](https://latex.codecogs.com/gif.latex?r), volatility ![sigma](https://latex.codecogs.com/gif.latex?%5Csigma) are common factors for both models that determine the price of the option.
 
 ``` Python
 
