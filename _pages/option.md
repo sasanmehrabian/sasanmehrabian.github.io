@@ -25,14 +25,20 @@ In this model, consider a stock (with an initial price of ![S_0](https://latex.c
 <img src="{{ site.url }}{{ site.baseurl }}/images/options/binomial.png"> 
 
 Cox, Ross and Rubenstein (CRR) suggested a method for calculating p, u and d. Over a small period of time, the binomial model acts similarly to an asset that exists in a risk neutral world. This results in the following equation, which implies that the effective return of the binomial model (on the right-hand side) is equal to the risk-free rate:
+
 ![CRR](https://latex.codecogs.com/gif.latex?pu&plus;%281-p%29d%3De%5E%7Br%20dt%7D)
 Additionally, the variance of a risk-neutral asset and an asset in a risk neutral world match. This gives the following equation.
+
 ![CRR2](https://latex.codecogs.com/gif.latex?pu%5E2&plus;%281-p%29d%5E2-e%5E%7B2rdt%7D%3D%5Csigma%5E2dt)
 The CRR model suggests the following relationship between the upside and downside factors.
+
 ![CRR3](https://latex.codecogs.com/gif.latex?u%3D1/d)
 Rearranging these equations gives the following equations for p, u and d.
+
 ![CRR4](https://latex.codecogs.com/gif.latex?p%3D%5Cfrac%7Be%5E%7Brdt%7D-d%7D%7Bu-d%7D)
+
 ![CRR5](https://latex.codecogs.com/gif.latex?u%3De%5E%7B%5Csigma%5Csqrt%20dt%7D)
+
 ![CRR6](https://latex.codecogs.com/gif.latex?d%3De%5E%7B-%5Csigma%5Csqrt%20dt%7D)
 The values of p, u and d given by the CRR model means that the underlying initial asset price is symmetric for a multi-step binomial model.
 
