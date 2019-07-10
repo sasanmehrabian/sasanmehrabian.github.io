@@ -277,7 +277,7 @@ The GIF image presented at the top of this page is the result of combining all t
 
 The LIBOR interest rates data obtained from FRED website is known as non-stationary time series data, because the mean, varience, and covariance change over time. If the time series is non-stationary, we can often transform it to stationarity by differencing the data. That is, given the series Z_(t), we create the new series:
 
-Y_(i)=Z_(i) -Z_(i-1)
+![first equation](https://latex.codecogs.com/gif.latex?Y_%7Bi%7D%3DZ_%7Bi%7D%20-Z_%7Bi-1%7D)
 
 The differenced data will contain one less point than the original data. Although you can difference the data more than once, one difference is usually sufficient. So to summarize, a stationary time series is the one for which the properties (namely mean, variance and covariance) do not depend on time. Most statistical and financial models and analysis require stationary time series.
 
