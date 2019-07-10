@@ -20,6 +20,7 @@ For instance, if the stock price ![S](https://latex.codecogs.com/gif.latex?S) ri
 
 
 ## Binomial Tree model <a name="Binomial"/>
+[Return to Top](#toc)
 In this model, consider a stock (with an initial price of ![S_0](https://latex.codecogs.com/gif.latex?S_0) undergoing a random walk. Over a time step ![delta_t](https://latex.codecogs.com/gif.latex?dt), the stock has a probability p of rising by a factor u, and a probability 1-p of  falling in price by a factor d. This is illustrated by the following diagram.
 
 <img src="{{ site.url }}{{ site.baseurl }}/images/options/binomial.png"> 
@@ -69,7 +70,7 @@ binomial_tree <- function(N,T,S,K,r,sigma, option){
   # option: Type of option "call" or "put"
 
   # convert the maturity length into years
-  T= T / 365
+  T = T / 365
   dt = T/N
   u = exp(sigma*sqrt(dt))
   d = 1/u 
@@ -82,34 +83,68 @@ binomial_tree <- function(N,T,S,K,r,sigma, option){
   b = 2
   up_N = 0 
   down_N = 0
-  for (i in seq(2,N+1)){
-    down_N=0
-    up_N=i-1
-    for (j in seq(1,b)){
+  for (i in seq(2,N + 1)){
+    down_N = 0
+    up_N = i - 1
+    for (j in seq(1, b)){
       M[j,i] = S*u**(up_N)*d**(down_N)
       up_N = up_N - 1
       down_N = down_N + 1
     }
-    b=b+1
+    b = b + 1
   }
   # Create a zero matrix for the option price
   O = matrix( rep( 0, len=(N+1)*(N+1)), nrow = N+1)
   # calculate the option value at expiration date
   if (option == 'call'){
-    for (i in seq(1, N+1)){
-      O[i,N+1] = max(0, M[i,N+1]-K)
+    for (i in seq(1, N + 1)){
+      O[i, N + 1] = max(0, M[i, N + 1]-K)
     }
   }
   if (option == 'put'){
-    for (i in seq(1, N+1)){
-      O[i,N+1] = max(K-M[i,N+1],0)
+    for (i in seq(1, N + 1)){
+      O[i, N + 1] = max(K-M[i, N + 1], 0)
     }
   }
-  for (i in seq(N,1,-1)){
+  for (i in seq(N, 1, -1)){
     for (j in seq(1, i)){
-      O[j,i] = exp(-r*dt) * (p*O[j,i+1]+(1-p)*O[j+1,i+1])
+      O[j, i] = exp(-r*dt) * (p*O[j, i+1]+(1-p)*O[j+1, i+1])
     }
   }
-  return( O[1,1])
+  return(O[1, 1])
 }
 ```
+
+
+## Black-Scholes model <a name="Black"/>
+[Return to Top](#toc)
+
+
+
+``` r
+black_scholes <- function(S, K, T, r,q, sigma, option){
+  # S: Stock price
+  # K: Option Strike price
+  # T: Maturity time in days e.g. 31
+  # r: risk-free interest rate
+  # q: dividend rate
+  # sigma: Volatility 
+  # option: Type of option "call" or "put"
+  
+  #convert the maturity length into years
+  T = T / 365
+  d1 = (log(S / K) + (r - q + 0.5 * sigma ** 2) * T) / (sigma * sqrt(T))
+  d2 = (log(S / K) + (r - q - 0.5 * sigma ** 2) * T) / (sigma * sqrt(T))
+  
+  if (option == 'call'){
+    result = (S * pnorm(d1, 0.0, 1.0) - K * exp(-r * T) * pnorm(d2, 0.0, 1.0))
+  }
+  if (option == 'put'){
+    result = (K * exp(-r * T) * pnorm(-d2, 0.0, 1.0) - S * pnorm(-d1, 0.0, 1.0))
+  }
+  return(result)
+}
+```
+
+## Conclustion <a name="Conclusion"/>
+[Return to Top](#toc)
