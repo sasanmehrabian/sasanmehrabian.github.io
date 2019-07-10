@@ -27,12 +27,15 @@ In this model, consider a stock (with an initial price of ![S_0](https://latex.c
 Cox, Ross and Rubenstein (CRR) suggested a method for calculating p, u and d. Over a small period of time, the binomial model acts similarly to an asset that exists in a risk neutral world. This results in the following equation, which implies that the effective return of the binomial model (on the right-hand side) is equal to the risk-free rate:
 
 ![CRR](https://latex.codecogs.com/gif.latex?pu&plus;%281-p%29d%3De%5E%7Br%20dt%7D)
+
 Additionally, the variance of a risk-neutral asset and an asset in a risk neutral world match. This gives the following equation.
 
 ![CRR2](https://latex.codecogs.com/gif.latex?pu%5E2&plus;%281-p%29d%5E2-e%5E%7B2rdt%7D%3D%5Csigma%5E2dt)
+
 The CRR model suggests the following relationship between the upside and downside factors.
 
 ![CRR3](https://latex.codecogs.com/gif.latex?u%3D1/d)
+
 Rearranging these equations gives the following equations for p, u and d.
 
 ![CRR4](https://latex.codecogs.com/gif.latex?p%3D%5Cfrac%7Be%5E%7Brdt%7D-d%7D%7Bu-d%7D)
@@ -40,10 +43,73 @@ Rearranging these equations gives the following equations for p, u and d.
 ![CRR5](https://latex.codecogs.com/gif.latex?u%3De%5E%7B%5Csigma%5Csqrt%20dt%7D)
 
 ![CRR6](https://latex.codecogs.com/gif.latex?d%3De%5E%7B-%5Csigma%5Csqrt%20dt%7D)
+
 The values of p, u and d given by the CRR model means that the underlying initial asset price is symmetric for a multi-step binomial model.
 
-``` Python
+We will consider the following payoff functions at maturity time. 
 
+For call option: ![call](https://latex.codecogs.com/gif.latex?C%3Dmax%280%2C%20S-K%29)
 
+For put option: ![put](https://latex.codecogs.com/gif.latex?P%3Dmax%280%2C%20K-S%29)
 
+Also, the value of the option at each node can be computed using the following equation:
+
+![option](https://latex.codecogs.com/gif.latex?C_%7Bt-dt%2Ci%7D%3De%5E%7B-rdt%7D%5Cbigg%28pC_%7Bt%2Ci%7D&plus;%281-p%29C_%7Bt%2Ci&plus;1%7D%20%5Cbigg%29)
+
+The above equation implies that we need to initially calculate the option price at maturity time (last node), and then move backwards to calculate the option price of each node until we reach today's date (first node). The code for such algorithm in R is given below:
+
+``` r
+binomial_tree <- function(N,T,S,K,r,sigma, option){
+  # N: Number of nodes e.g. 100
+  # T: Maturity time in days e.g. 31
+  # S: Stock price
+  # K: Option Strike price
+  # r: risk-free interest rate
+  # sigma: Volatility 
+  # option: Type of option "call" or "put"
+
+  # convert the maturity length into years
+  T= T / 365
+  dt = T/N
+  u = exp(sigma*sqrt(dt))
+  d = 1/u 
+  p = (exp(r*dt) - d)/(u-d)
+  # Create a zero matrix for Stock price
+  M = matrix( rep( 0, len=(N+1)*(N+1)), nrow = N+1)
+  # Initialize the matrix with the value S
+  M[1,1] = S
+  
+  b = 2
+  up_N = 0 
+  down_N = 0
+  for (i in seq(2,N+1)){
+    down_N=0
+    up_N=i-1
+    for (j in seq(1,b)){
+      M[j,i] = S*u**(up_N)*d**(down_N)
+      up_N = up_N - 1
+      down_N = down_N + 1
+    }
+    b=b+1
+  }
+  # Create a zero matrix for the option price
+  O = matrix( rep( 0, len=(N+1)*(N+1)), nrow = N+1)
+  # calculate the option value at expiration date
+  if (option == 'call'){
+    for (i in seq(1, N+1)){
+      O[i,N+1] = max(0, M[i,N+1]-K)
+    }
+  }
+  if (option == 'put'){
+    for (i in seq(1, N+1)){
+      O[i,N+1] = max(K-M[i,N+1],0)
+    }
+  }
+  for (i in seq(N,1,-1)){
+    for (j in seq(1, i)){
+      O[j,i] = exp(-r*dt) * (p*O[j,i+1]+(1-p)*O[j+1,i+1])
+    }
+  }
+  return( O[1,1])
+}
 ```
