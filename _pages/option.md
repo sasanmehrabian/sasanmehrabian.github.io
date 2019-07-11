@@ -14,7 +14,7 @@ toc: true
 ## Introduction <a name="Introduction"/> 
 [Return to Top](#toc)
 
-There are several models used for pricing options. Binomial tree and Black-Scholes are the most common models. The current stock price ![S](https://latex.codecogs.com/gif.latex?S), intrinsic value or the option strike price ![K](https://latex.codecogs.com/gif.latex?K), Maturity lenth ![T](https://latex.codecogs.com/gif.latex?T), risk-free interest rate ![r](https://latex.codecogs.com/gif.latex?r), volatility ![sigma](https://latex.codecogs.com/gif.latex?%5Csigma) are common factors for both models that determine the price of the option. 
+There are several models used for pricing options. Binomial tree and Black-Scholes are the most common models. The current stock price ![S](https://latex.codecogs.com/gif.latex?S), the option strike price ![K](https://latex.codecogs.com/gif.latex?K), Maturity lenth ![T](https://latex.codecogs.com/gif.latex?T), risk-free interest rate ![r](https://latex.codecogs.com/gif.latex?r), volatility ![sigma](https://latex.codecogs.com/gif.latex?%5Csigma) are common factors for both models that determine the price of the option. 
 
 For instance, if the stock price ![S](https://latex.codecogs.com/gif.latex?S) rises, there is high probability that the price of a call option will rise and the price of a put option will fall. If the stock price goes down, the reverse will most likely happen to the price of the calls and puts. Intrinsic value is the amount by which the strike price of an option is in the money. It is the portion of an option's price not lost due to the passage of time.
 
@@ -129,6 +129,7 @@ The formula for calculating the option price is:
 
 ![d2](https://latex.codecogs.com/gif.latex?d_2%3Dd_1-%5Csigma%5Csqrt%28T-t%29)
 
+The R code for Black-Scholes is:
 ``` r
 black_scholes <- function(S, K, T, r,q, sigma, option){
   # S: Stock price
@@ -154,5 +155,7 @@ black_scholes <- function(S, K, T, r,q, sigma, option){
 }
 ```
 
-## Conclusion <a name="Conclusion"/>
+## Conclusion with example: <a name="Conclusion"/>
 [Return to Top](#toc)
+
+As an example, I will get the call option price of APPLE Inc. (AAPL) using both models. The current stock price ![S](https://latex.codecogs.com/gif.latex?S), The option strike price ![K](https://latex.codecogs.com/gif.latex?K), and the volatility ![sigma](https://latex.codecogs.com/gif.latex?%5Csigma) from [YAHOO finance](https://finance.yahoo.com/quote/AAPL/options?p=AAPL&date=1565913600) website
