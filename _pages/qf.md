@@ -19,7 +19,7 @@ toc: true
 
 	The Vasicek Model is used to predict USD LIBOR interest rates. A theoretical approach is used to estimate the parameters of the model (drift, volatility, and speed of reversion).
 
-4. [Option Pricing using Binomial Tree and Black-Scholes Models](https://sasanmehrabian.github.io/option/)
+4. [Option Pricing using Binomial Tree and Black-Scholes Models:](https://sasanmehrabian.github.io/option/)
 
 	The Binomial Tree model and the Black-Scholes Model are explained in details to determine the price of an option.
 

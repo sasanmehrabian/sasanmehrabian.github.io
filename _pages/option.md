@@ -119,7 +119,15 @@ binomial_tree <- function(N,T,S,K,r,sigma, option){
 ## Black-Scholes model <a name="Black"/>
 [Return to Top](#toc)
 
+The Black-Scholes model is used to determine the price of a European call option, which simply means that the option can only be exercised on the expiration date. Black-Scholes pricing model is largely used by option traders who buy options that are priced under the formula calculated value, and sell options that are priced higher than the Black-Schole calculated value.
 
+The formula for calculating the option price is:
+![call_b](https://latex.codecogs.com/gif.latex?C%3De%5E%7B-r%28T-t%29%7D%5Cbigg%5BN%28d_1%29S_te%5E%7B%28r-q%29%28T-t%29%7D-N%28d_2%29Ke%5E%7B-r%28T-t%29%7D%20%5Cbigg%5D)
+![put_b](https://latex.codecogs.com/gif.latex?P%3De%5E%7B-r%28T-t%29%7D%5Cbigg%5BN%28-d_2%29Ke%5E%7B-r%28T-t%29%7D-N%28-d_1%29S_te%5E%7B%28r-q%29%28T-t%29%7D%20%5Cbigg%5D)
+
+![d1](https://latex.codecogs.com/gif.latex?d_1%3D%5Cfrac%7B1%7D%7B%5Csigma%5Csqrt%28T-t%29%7D%20%5Cbigg%5Bln%5Cbigg%28%5Cfrac%7BS_t%7D%7BK%7D%5Cbigg%29&plus;%5Cbigg%28r-q&plus;%5Cfrac%7B%5Csigma%5E2%7D%7B2%7D%20%5Cbigg%29%28T-t%29%20%5Cbigg%5D)
+
+![d2](https://latex.codecogs.com/gif.latex?d_2%3Dd_1-%5Csigma%5Csqrt%28T-t%29)
 
 ``` r
 black_scholes <- function(S, K, T, r,q, sigma, option){
