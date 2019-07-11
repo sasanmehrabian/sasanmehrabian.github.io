@@ -146,5 +146,5 @@ black_scholes <- function(S, K, T, r,q, sigma, option){
 }
 ```
 
-## Conclustion <a name="Conclusion"/>
+## Conclusion <a name="Conclusion"/>
 [Return to Top](#toc)
