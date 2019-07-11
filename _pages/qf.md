@@ -21,7 +21,7 @@ toc: true
 
 4. [Option Pricing using Binomial Tree and Black-Scholes Models:](https://sasanmehrabian.github.io/option/)
 
-	The Binomial Tree model and the Black-Scholes Model are explained in details to determine the price of an option.
+	The Binomial Tree model and the Black-Scholes Model are explained in details. An R code is presented to illustrate how to price a call or put option.
 
 <img src="{{ site.url }}{{ site.baseurl }}/images/LIBOR/qf.jpg">
 
