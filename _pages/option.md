@@ -158,4 +158,17 @@ black_scholes <- function(S, K, T, r,q, sigma, option){
 ## Conclusion with example: <a name="Conclusion"/>
 [Return to Top](#toc)
 
-As an example, I will get the call option price of APPLE Inc. (AAPL) using both models. The current stock price ![S](https://latex.codecogs.com/gif.latex?S), The option strike price ![K](https://latex.codecogs.com/gif.latex?K), and the volatility ![sigma](https://latex.codecogs.com/gif.latex?%5Csigma) from [YAHOO finance](https://finance.yahoo.com/quote/AAPL/options?p=AAPL&date=1565913600) website
+As an example, I will get the price of the call option for APPLE Inc. (AAPL) using both models. The current stock price ![S](https://latex.codecogs.com/gif.latex?S), The option strike price ![K](https://latex.codecogs.com/gif.latex?K), and the volatility ![sigma](https://latex.codecogs.com/gif.latex?%5Csigma) for a 35 days maturity time (Expiration date Aug 16, 2019) obtained from [YAHOO finance](https://finance.yahoo.com/quote/AAPL/options?p=AAPL&date=1565913600) website on July 11, 2019 are 201.75, 200, and 26.22%, respectively. The Bid and Ask price shown on YAHOO is between 7.5 and 7.6 after market close.  If we assume that the risk-free interest rate is 1% and there are no dividends, the option call price based on the Black-Scholes model is 7.72. Assuming that we choose 100 nodes for the Binomial Tree, the option call price is estimated 7.73.
+``` r
+N = 100
+T = 35
+S = 201.75
+K = 200
+sigma = 0.27
+r = 0.01
+q = 0
+option = 'call'
+black_scholes(S, K, T, r, q, sigma, option)
+binomial_tree(N, T, S, K, r, sigma, option)
+```
+The call option price for both models are very close to eachother. but both values are higher than the asking price.
