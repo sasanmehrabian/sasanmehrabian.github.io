@@ -23,5 +23,7 @@ toc: true
 
 	The Binomial Tree model and the Black-Scholes Model are explained in details. An R code is presented to illustrate how to price a call or put option.
 
+5. [Simple Linear Regression](https://sasanmehrabian.github.io/reg1/)
+
 <img src="{{ site.url }}{{ site.baseurl }}/images/LIBOR/qf.jpg">
 
