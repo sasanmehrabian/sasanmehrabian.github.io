@@ -28,12 +28,14 @@ Simple linear regression is useful for finding relationship between two continuo
 [Return to Top](#toc)
 
 1. Linear Relationship between the features and target: According to this assumption there is linear relationship between the features and target. Linear regression captures only linear relationship. This can be validated by plotting a scatter plot between the features and the target. The left scatter plot tells us that as x increases y also increases linearly. However, the right scatter plot shows no significant linear relation between x and y.
-
+<img src="{{ site.url }}{{ site.baseurl }}/images/reg/reg1.png"> 
 2. Little or no Multicollinearity between the features: Multicollinearity is a state of very high inter-correlations or inter-associations among the independent variables. Pair plots and heatmaps(correlation matrix) can be used for identifying highly correlated features. If we have 2 features which are highly correlated we can drop one feature or combine the 2 features to form a new feature,which can further be used for prediction.
 
 3. Homoscedasticity Assumption: Homoscedasticity describes a situation in which the error term (that is, the “noise” or random disturbance in the relationship between the features and the target) is the same across all values of the independent variables.A scatter plot of residual values vs predicted values is a goodway to check for homoscedasticity. There should be no clear pattern in the distribution and if there is a specific pattern,the data is heteroscedastic.
+<img src="{{ site.url }}{{ site.baseurl }}/images/reg/reg2.png">
 
 4. Normal distribution of error terms: Normal distribution of the residuals can be validated by plotting a q-q plot. The left graph shows a normal distribution, whereas, the right graph does not.
+<img src="{{ site.url }}{{ site.baseurl }}/images/reg/reg3.png">
 
 5. Little or No autocorrelation in the residuals: Autocorrelation occurs when the residual errors are dependent on each other.The presence of correlation in error terms drastically reduces model’s accuracy. This usually occurs in time series models where the next instant is dependent on previous instant. Autocorrelation can be tested with the help of Durbin-Watson test.The null hypothesis of the test is that there is no serial correlation. The Durbin-Watson test statistics is defined as:
 
