@@ -81,5 +81,5 @@ In summary, PC1 can be interpreted as directional movements, PC2, as slope movem
 ```r
 fviz_pca_var(USD_1D_pca)
 ```
-<img src="{{ site.url }}{{ site.baseurl }}/images/LIBOR/PCA3.jpeg">
+<img src="{{ site.url }}{{ site.baseurl }}/images/LIBOR/PCA3.jpg">
 The x axis is PC1, and y axis represents PC2. One can see that all of the maturities are on right side (sign is arbitrary) of the graph with respect to PC1, meaning that if the interest rates of one of the maturities increase, the rest will increase too and vice versa. Also, Overnight, 1 Month, and 3 Months maturites are in the negative side and 6 Months, 9 Months, and 12 Months maturities are on the positive side with respect to y axis (or PC2). meaning that if the short terms (Overnight, 1 Month, and 3 Months) increase, the long terms (6 Months, 9 Months, and 12 Months) decrease, and vice versa.

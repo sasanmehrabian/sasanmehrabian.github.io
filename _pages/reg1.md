@@ -39,6 +39,6 @@ Simple linear regression is useful for finding relationship between two continuo
 
 5. Little or No autocorrelation in the residuals: Autocorrelation occurs when the residual errors are dependent on each other.The presence of correlation in error terms drastically reduces model’s accuracy. This usually occurs in time series models where the next instant is dependent on previous instant. Autocorrelation can be tested with the help of Durbin-Watson test.The null hypothesis of the test is that there is no serial correlation. The Durbin-Watson test statistics is defined as:
 
-![DW](https://latex.codecogs.com/gif.latex?DW_%7Btest%7D%3D%5Cfrac%7B%5Csum_%7Bt%3D2%7D%5E%7BT%7D%28e_t-e_%7Bt-1%7D%29%5E2%7D%7B%5Csum_%7Bt%3D1%7D%5E%7BT%7De_t%5E2%7D)
+	![DW](https://latex.codecogs.com/gif.latex?DW_%7Btest%7D%3D%5Cfrac%7B%5Csum_%7Bt%3D2%7D%5E%7BT%7D%28e_t-e_%7Bt-1%7D%29%5E2%7D%7B%5Csum_%7Bt%3D1%7D%5E%7BT%7De_t%5E2%7D)
 
-The test statistic is approximately equal to 2*(1-r) where r is the sample autocorrelation of the residuals. Thus, for r == 0, indicating no serial correlation, the test statistic equals 2. This statistic will always be between 0 and 4. The closer to 0 the statistic, the more evidence for positive serial correlation. The closer to 4, the more evidence for negative serial correlation.
+	The test statistic is approximately equal to ![DW2](https://latex.codecogs.com/gif.latex?2%281-r%29) where r is the sample autocorrelation of the residuals. Thus, for r = 0, indicating no serial correlation, the test statistic equals 2. This statistic will always be between 0 and 4. The closer to 0 the statistic, the more evidence for positive serial correlation. The closer to 4, the more evidence for negative serial correlation.
