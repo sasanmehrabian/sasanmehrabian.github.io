@@ -5,6 +5,8 @@ title: "LIBOR Interest Rates Analysis"
 author_profile: true
 toc: true
 ---
+<img src="{{ site.url }}{{ site.baseurl }}/images/LIBOR/term_structure.gif"> 
+<a name="term"/>
 
 ##  <a name="toc"/>
 - [Introduction](#Introduction)
@@ -13,8 +15,6 @@ toc: true
 - [Non-stationary vs. stationary time series](#Stationary)
 
 
-<img src="{{ site.url }}{{ site.baseurl }}/images/LIBOR/term_structure.gif"> 
-<a name="term"/>
 
 ## Introduction <a name="Introduction"/> 
 [Return to Top](#toc)
