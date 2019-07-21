@@ -9,7 +9,7 @@ toc: true
 ##  <a name="toc"/>
 - [Introduction](#Introduction)
 - [Assumptions of linear regression](#assumptions)
-- [Term structure](#Term)
+- [Example](#example)
 - [Distribution of LIBOR interest rates]
 - [Non-stationary vs. stationary time series](#Stationary)
 
@@ -42,3 +42,24 @@ Simple linear regression is useful for finding relationship between two continuo
 	![DW](https://latex.codecogs.com/gif.latex?DW_%7Btest%7D%3D%5Cfrac%7B%5Csum_%7Bt%3D2%7D%5E%7BT%7D%28e_t-e_%7Bt-1%7D%29%5E2%7D%7B%5Csum_%7Bt%3D1%7D%5E%7BT%7De_t%5E2%7D)
 
 	The test statistic is approximately equal to ![DW2](https://latex.codecogs.com/gif.latex?2%281-r%29) where r is the sample autocorrelation of the residuals. Thus, for r = 0, indicating no serial correlation, the test statistic equals 2. This statistic will always be between 0 and 4. The closer to 0 the statistic, the more evidence for positive serial correlation. The closer to 4, the more evidence for negative serial correlation.
+
+
+## Example <a name="example"/> 
+[Return to Top](#toc)
+
+In this post, I’ll walk you through how to build a linear regression in R and use built-in diagnostic plots for linear regression analysis. The data I will be using shows the height and weight of 50 random women. You can download the data here. The first step is to read the data and assign variables x and y to each column.
+```r
+data=read.csv(file="C:/Users/User/Desktop/GitHub/sasanmehrabian.github.io/data/women.csv")
+x=data$height
+y=data$weight
+plot(x, y, xlab="Height (cm)", ylab="Weight (kg)", pch=18, col="blue")
+```
+<img src="{{ site.url }}{{ site.baseurl }}/images/reg/women.png">
+
+
+Use the lm function to build the model, and use the "summary" command line to see the coefficients and statistical parameters:
+``` r
+model = lm(y~x, data = data)
+summary(model)
+```
+<img src="{{ site.url }}{{ site.baseurl }}/images/reg/women.png">
