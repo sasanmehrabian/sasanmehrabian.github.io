@@ -65,6 +65,18 @@ The statistics in the above figure are:
 
 1) **Residuals:** Provide a quick view of the distribution of the residuals, which by definition have a mean zero. Therefore, the median should not be far from zero, and the minimum and maximum should be roughly equal in absolute value. One can also visualize these statistics by plotting the distribution of the residuals or ploting the box plot of the residuals. The black curve in the distribution is the normal distribution fit.
 ```r
+# Assign the residuals into a variable
+residuals=model$residuals
+
+# use the fitdistr to fit the data for a normal distribution
+library(fitdistrplus)
+fit <- fitdistr(residuals, "normal")
+
+# assign the parameters of the fit (mean and standard deviation) to a variable
+para <- fit$estimate
+
+# plot
+windows()
 par(mfrow = c(2, 1))
 hist(residuals, prob = TRUE, cex.axis=1.5, cex.lab=1.5, col='grey', main='')
 curve(dnorm(x, para[1], para[2]), col = 1, lwd=3, add = TRUE)
