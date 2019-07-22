@@ -46,17 +46,17 @@ Simple linear regression is useful for finding relationship between two continuo
 
 In this post, I’ll walk you through how to build a linear regression in R and use built-in diagnostic plots for linear regression analysis. The data I will be using shows the height and weight of 50 random women. You can download the data here. The first step is to read the data and assign variables x and y to each column.
 ```r
-data=read.csv(file="C:/Users/User/Desktop/GitHub/sasanmehrabian.github.io/data/women.csv")
-x=data$height
-y=data$weight
+data = read.csv(file="C:/Users/User/Desktop/GitHub/sasanmehrabian.github.io/data/women.csv")
+x = data $ height
+y = data $ weight
 ```
 Use the **lm** function to build the model, and use the "summary" command line to see the coefficients and statistical parameters:
 ``` r
-model = lm(y~x, data = data)
+model = lm(y ~ x, data = data)
 summary(model)
 # Plot the raw data and the fitted linear line
-plot(x, y, xlab="Height (cm)", ylab="Weight (kg)", pch=19, col="blue", cex=2, cex.axis=2, cex.lab=2)
-abline(model, lwd=3, col=2)
+plot(x, y, xlab = "Height (cm)", ylab = "Weight (kg)", pch = 19, col = "blue", cex = 2, cex.axis = 2, cex.lab = 2)
+abline(model, lwd = 3, col = 2)
 ```
 <img src="{{ site.url }}{{ site.baseurl }}/images/reg/women1.png">
 <img src="{{ site.url }}{{ site.baseurl }}/images/reg/women2.png">
@@ -66,21 +66,21 @@ The statistics in the above figure are:
 1) **Residuals:** Provide a quick view of the distribution of the residuals, which by definition have a mean zero. Therefore, the median should not be far from zero, and the minimum and maximum should be roughly equal in absolute value. One can also visualize these statistics by plotting the distribution of the residuals or ploting the box plot of the residuals. The black curve in the distribution is the normal distribution fit.
 ```r
 # Assign the residuals into a variable
-residuals=model$residuals
+residuals = model $ residuals
 
 # use the fitdistr to fit the data for a normal distribution
 library(fitdistrplus)
 fit <- fitdistr(residuals, "normal")
 
 # assign the parameters of the fit (mean and standard deviation) to a variable
-para <- fit$estimate
+para <- fit $ estimate
 
 # plot
 windows()
 par(mfrow = c(2, 1))
-hist(residuals, prob = TRUE, cex.axis=1.5, cex.lab=1.5, col='grey', main='')
-curve(dnorm(x, para[1], para[2]), col = 1, lwd=3, add = TRUE)
-res_outliers=boxplot(residuals,col="grey", horizontal = TRUE, cex.axis=1.5, cex.lab=1.5)$out
+hist(residuals, prob = TRUE, cex.axis = 1.5, cex.lab = 1.5, col = 'grey', main = '')
+curve(dnorm(x, para[1], para[2]), col = 1, lwd = 3, add = TRUE)
+res_outliers = boxplot(residuals,col = "grey", horizontal = TRUE, cex.axis = 1.5, cex.lab = 1.5) $ out
 ```
 <img src="{{ site.url }}{{ site.baseurl }}/images/reg/women3.png">
 
