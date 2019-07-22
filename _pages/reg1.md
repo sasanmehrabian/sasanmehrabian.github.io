@@ -49,21 +49,21 @@ In this post, I’ll walk you through how to build a linear regression in R and 
 data=read.csv(file="C:/Users/User/Desktop/GitHub/sasanmehrabian.github.io/data/women.csv")
 x=data$height
 y=data$weight
-plot(x, y, xlab="Height (cm)", ylab="Weight (kg)", pch=18, col="blue")
 ```
-<img src="{{ site.url }}{{ site.baseurl }}/images/reg/women1.png">
-
-
-Use the lm function to build the model, and use the "summary" command line to see the coefficients and statistical parameters:
+Use the **lm** function to build the model, and use the "summary" command line to see the coefficients and statistical parameters:
 ``` r
 model = lm(y~x, data = data)
 summary(model)
+# Plot the raw data and the fitted linear line
+plot(x, y, xlab="Height (cm)", ylab="Weight (kg)", pch=19, col="blue", cex=2, cex.axis=2, cex.lab=2)
+abline(model, lwd=3, col=2)
 ```
+<img src="{{ site.url }}{{ site.baseurl }}/images/reg/women1.png">
 <img src="{{ site.url }}{{ site.baseurl }}/images/reg/women2.png">
 
 The statistics in the above figure are:
 
-1) **Residuals:** Provide a quick view of the distribution of the residuals, which by definition have a mean zero. Therefore, the median should not be far from zero, and the minimum and maximum should be roughly equal in absolute value. One can also visualize these statistics using the following code:
+1) **Residuals:** Provide a quick view of the distribution of the residuals, which by definition have a mean zero. Therefore, the median should not be far from zero, and the minimum and maximum should be roughly equal in absolute value. One can also visualize these statistics by plotting the distribution of the residuals or ploting the box plot of the residuals. The black curve in the distribution is the normal distribution fit.
 ```r
 par(mfrow = c(2, 1))
 hist(residuals, prob = TRUE, cex.axis=1.5, cex.lab=1.5, col='grey', main='')
@@ -82,9 +82,7 @@ The statistical hypotheses are as follow:
 - **Null hypothesis (H0):** the coefficients are equal to zero (i.e., no relationship between x and y)
 - **Alternative Hypothesis (Ha):** the coefficients are not equal to zero (i.e., there is some relationship between x and y)
 
-Mathematically, for a given beta coefficient (![bi](https://latex.codecogs.com/gif.latex?\beta_i)), the t-test measures the number of standard deviations that beta is away from 0. Thus a large t-statistic will produce a small p-value. The higher the t-statistic (and the lower the p-value), the more significant the predictor. The symbols to the right visually specifies the level of significance. The line below the table shows the definition of these symbols; one star means 0.01 < p < 0.05. The more the stars beside the variable’s p-value, the more significant the variable.
-
-The t-statistic is a very useful guide for whether or not to include a predictor in a model. This will be useful in multi-variate linear regression. High t-statistics (which go with low p-values near 0) indicate that a predictor should be retained in a model, while very low t-statistics indicate a predictor could be dropped.
+Mathematically, for a given beta coefficient (![bi](https://latex.codecogs.com/gif.latex?\beta_i)), the t-test measures the number of standard deviations that beta is away from 0. Thus a large t-statistic will produce a small p-value. The higher the t-statistic (and the lower the p-value), the more significant the predictor. The symbols to the right visually specifies the level of significance. The line below the table shows the definition of these symbols; one star means 0.01 < p < 0.05. The more the stars beside the variable’s p-value, the more significant the variable. The t-statistic is a very useful guide for whether or not to include a predictor in a model. This will be useful in multi-variate linear regression. High t-statistics (which go with low p-values near 0) indicate that a predictor should be retained in a model, while very low t-statistics indicate a predictor could be dropped.
 
 In our example, both the p-values for the intercept and the predictor variable are highly significant, so we can reject the null hypothesis and accept the alternative hypothesis, which means that there is a significant association between the predictor and the outcome variables.
 
