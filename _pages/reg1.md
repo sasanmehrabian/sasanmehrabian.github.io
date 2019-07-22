@@ -61,8 +61,17 @@ summary(model)
 ```
 <img src="{{ site.url }}{{ site.baseurl }}/images/reg/women2.png">
 
-There are a lot of statistics in the above figure. 
-1) **Residuals:** Provide a quick view of the distribution of the residuals, which by definition have a mean zero. Therefore, the median should not be far from zero, and the minimum and maximum should be roughly equal in absolute value.
+The statistics in the above figure are:
+
+1) **Residuals:** Provide a quick view of the distribution of the residuals, which by definition have a mean zero. Therefore, the median should not be far from zero, and the minimum and maximum should be roughly equal in absolute value. One can also visualize these statistics using the following code:
+```r
+par(mfrow = c(2, 1))
+hist(residuals, prob = TRUE, cex.axis=1.5, cex.lab=1.5, col='grey', main='')
+curve(dnorm(x, para[1], para[2]), col = 1, lwd=3, add = TRUE)
+res_outliers=boxplot(residuals,col="grey", horizontal = TRUE, cex.axis=1.5, cex.lab=1.5)$out
+```
+<img src="{{ site.url }}{{ site.baseurl }}/images/reg/women3.png">
+
 2) **Coefficients:** Shows the regression beta coefficients and their statistical significance. Predictor variables, that are significantly associated to the outcome variable, are marked by stars.
 
 Mathematically, the beta coefficients (![b0](https://latex.codecogs.com/gif.latex?\beta_0), ![b1](https://latex.codecogs.com/gif.latex?\beta_1)) are determined so that the RSS is as minimal as possible. This method of determining the beta coefficients is technically called least squares regression or ordinary least squares (OLS) regression. Once, the beta coefficients are calculated, a t-test is performed to check whether or not these coefficients are significantly different from zero. A non-zero beta coefficients means that there is a significant relationship between the predictors (![x](https://latex.codecogs.com/gif.latex?x)) and the outcome variable (![y](https://latex.codecogs.com/gif.latex?y)).
