@@ -62,9 +62,12 @@ abline(model, lwd = 3, col = 2)
 <img src="{{ site.url }}{{ site.baseurl }}/images/reg/women2.png">
 
 The statistics in the above figure are:
-1) **Residuals** (#one)
-2) **Coefficients:** (#two)
-3) **Residual standard error (RSE)**, **R-squared (R2)** and the **F-statistic** (#three)
+
+1) [**Residuals**](#one)
+
+2) [**Coefficients:**](#two)
+
+3) [**Residual standard error (RSE)**, **R-squared (R2)** and the **F-statistic**](#three)
 
 1) **Residuals:<a name="one"/>** Provide a quick view of the distribution of the residuals, which by definition have a mean zero. Therefore, the median should not be far from zero, and the minimum and maximum should be roughly equal in absolute value. One can also visualize these statistics by plotting the distribution of the residuals or ploting the box plot of the residuals. The black curve in the distribution is the normal distribution fit.
 ```r
