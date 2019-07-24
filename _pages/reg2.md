@@ -8,11 +8,7 @@ toc: true
 
 ##  <a name="toc"/>
 - [Introduction](#Introduction)
-- [Extract and visualize raw data](#Extract)
-- [Term structure](#Term)
-- [Distribution of LIBOR interest rates]
-- [Non-stationary vs. stationary time series](#Stationary)
-
+- [Example of Multi-variate linear regression](#example)
 
 
 ## Introduction <a name="Introduction"/> 

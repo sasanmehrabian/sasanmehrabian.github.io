@@ -9,7 +9,8 @@ toc: true
 
 1. [**Simple Linear Regression:**](https://sasanmehrabian.github.io/reg1/)
 
-2. **Multivariate Linear Regression:**
+2. [**Multivariate Linear Regression:**](https://sasanmehrabian.github.io/reg2/)
+
 
 3. [**LIBOR Interes Rate Analysis:**](https://sasanmehrabian.github.io/libor/)
 
