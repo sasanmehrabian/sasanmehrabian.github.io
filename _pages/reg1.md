@@ -113,5 +113,21 @@ confint(model)
 
 3) **Residual standard error (RSE)**, **R-squared (R2)** and the **F-statistic** are metrics that are used to check how well the model fits to our data.
 
+- **Residual standard error (RSE):** The RSE (also known as the model sigma) is the residual variation, representing the average variation of the observations points around the fitted regression line. This is the standard deviation of residual errors.
 
-**Standard errors and confidence intervals:**
+RSE provides an absolute measure of patterns in the data that can’t be explained by the model. When comparing two models, the model with the small RSE is a good indication that this model fits the best the data.
+
+Dividing the RSE by the average value of the outcome variable will give you the prediction error rate, which should be as small as possible.
+
+In our example, RSE = 2.458, meaning that the observed sales values deviate from the true regression line by approximately 2.5 units in average.
+
+- **R-squared and Adjusted R-squared:** The R-squared (R2) ranges from 0 to 1 and represents the proportion of information (i.e. variation) in the data that can be explained by the model. The adjusted R-squared adjusts for the degrees of freedom.
+
+The R2 measures, how well the model fits the data. For a simple linear regression, R2 is the square of the Pearson correlation coefficient.
+
+A high value of R2 is a good indication. However, as the value of R2 tends to increase when more predictors are added in the model, such as in multiple linear regression model, you should mainly consider the adjusted R-squared, which is a penalized R2 for a higher number of predictors. An (adjusted) R2 that is close to 1 indicates that a large proportion of the variability in the outcome has been explained by the regression model. A number near 0 indicates that the regression model did not explain much of the variability in the outcome. The adjusted R2 will be explained more in the next section.
+
+- **F-Statistic:** The F-statistic gives the overall significance of the model. It assess whether at least one predictor variable has a non-zero coefficient.
+
+In a simple linear regression, this test is not really interesting since it just duplicates the information in given by the t-test, available in the coefficient table. In fact, the F test is identical to the square of the t test: 113.5 = (10.65)^2. This is true in any model with 1 degree of freedom. The F-statistic becomes more important once we start using multiple predictors as in multiple linear regression. A large F-statistic will corresponds to a statistically significant p-value (p < 0.05). In our example, the F-statistic equal 113.5 producing a p-value of 3.96e-14, which is highly significant.
+
