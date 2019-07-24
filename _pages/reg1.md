@@ -100,6 +100,17 @@ To verify the homoscedasticity assumption, the values of residuals are ploted ag
 
 <img src="{{ site.url }}{{ site.baseurl }}/images/reg/women4.png">
 
+**Standard errors and confidence intervals:** The standard error measures the variability/accuracy of the beta coefficients. It can be used to compute the confidence intervals of the coefficients. For example, the 95% confidence interval for the coefficient ![b0](https://latex.codecogs.com/gif.latex?\beta_0) is defined as ![se1](https://latex.codecogs.com/gif.latex?%5Cbeta_0%20%5Cpm%202%5Ctimes%20SE%28%5Cbeta_0%29), where
+
+- The lower limit of  ![b1](https://latex.codecogs.com/gif.latex?\beta_1)= ![a](https://latex.codecogs.com/gif.latex?32.50287-2%5Ctimes%203.07760%3D26.34767)
+- The higher limit of ![b1](https://latex.codecogs.com/gif.latex?\beta_1)=![b](https://latex.codecogs.com/gif.latex?32.50287&plus;2%5Ctimes%203.07760%3D38.65807)
+
+That is, there is approximately a 95% chance that the interval [26.34767, 38.65807] will contain the true value of ![b0](https://latex.codecogs.com/gif.latex?\beta_0). To get these information, simply type:
+```r
+confint(model)
+```
+<img src="{{ site.url }}{{ site.baseurl }}/images/reg/women5.png">
+
 3) **Residual standard error (RSE)**, **R-squared (R2)** and the **F-statistic** are metrics that are used to check how well the model fits to our data.
 
 
