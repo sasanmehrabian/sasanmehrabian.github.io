@@ -62,8 +62,11 @@ abline(model, lwd = 3, col = 2)
 <img src="{{ site.url }}{{ site.baseurl }}/images/reg/women2.png">
 
 The statistics in the above figure are:
+1) **Residuals** (#one)
+2) **Coefficients:** (#two)
+3) **Residual standard error (RSE)**, **R-squared (R2)** and the **F-statistic** (#three)
 
-1) **Residuals:** Provide a quick view of the distribution of the residuals, which by definition have a mean zero. Therefore, the median should not be far from zero, and the minimum and maximum should be roughly equal in absolute value. One can also visualize these statistics by plotting the distribution of the residuals or ploting the box plot of the residuals. The black curve in the distribution is the normal distribution fit.
+1) **Residuals:<a name="one"/>** Provide a quick view of the distribution of the residuals, which by definition have a mean zero. Therefore, the median should not be far from zero, and the minimum and maximum should be roughly equal in absolute value. One can also visualize these statistics by plotting the distribution of the residuals or ploting the box plot of the residuals. The black curve in the distribution is the normal distribution fit.
 ```r
 # Assign the residuals into a variable
 residuals = model $ residuals
@@ -84,7 +87,7 @@ res_outliers = boxplot(residuals,col = "grey", horizontal = TRUE, cex.axis = 1.5
 ```
 <img src="{{ site.url }}{{ site.baseurl }}/images/reg/women3.png">
 
-2) **Coefficients:** Shows the regression beta coefficients and their statistical significance. The stars on the very right hand side shows the significance of how much ![x](https://latex.codecogs.com/gif.latex?x) and ![y](https://latex.codecogs.com/gif.latex?y) are related to each other. Mathematically, the beta coefficients (![b0](https://latex.codecogs.com/gif.latex?\beta_0), ![b1](https://latex.codecogs.com/gif.latex?\beta_1)) are determined so that the RSS is as minimal as possible. This method of determining the beta coefficients is technically called least squares regression or ordinary least squares (OLS) regression. Once, the beta coefficients are calculated, a t-test is performed to check whether or not these coefficients are significantly different from zero. A non-zero beta coefficients means that there is a significant relationship between the predictors (![x](https://latex.codecogs.com/gif.latex?x)) and the outcome variable (![y](https://latex.codecogs.com/gif.latex?y)). 
+2) **Coefficients:<a name="two"/>** Shows the regression beta coefficients and their statistical significance. The stars on the very right hand side shows the significance of how much ![x](https://latex.codecogs.com/gif.latex?x) and ![y](https://latex.codecogs.com/gif.latex?y) are related to each other. Mathematically, the beta coefficients (![b0](https://latex.codecogs.com/gif.latex?\beta_0), ![b1](https://latex.codecogs.com/gif.latex?\beta_1)) are determined so that the RSS is as minimal as possible. This method of determining the beta coefficients is technically called least squares regression or ordinary least squares (OLS) regression. Once, the beta coefficients are calculated, a t-test is performed to check whether or not these coefficients are significantly different from zero. A non-zero beta coefficients means that there is a significant relationship between the predictors (![x](https://latex.codecogs.com/gif.latex?x)) and the outcome variable (![y](https://latex.codecogs.com/gif.latex?y)). 
 
 For a given predictor (![x](https://latex.codecogs.com/gif.latex?x)), the t-statistic (and its associated p-value) tests whether or not there is a statistically significant relationship between a given predictor and the outcome variable (![y](https://latex.codecogs.com/gif.latex?y)), that is whether or not the beta coefficient of the predictor is significantly different from zero.
 
@@ -102,8 +105,8 @@ To verify the homoscedasticity assumption, the values of residuals are ploted ag
 
 **Standard errors and confidence intervals:** The standard error measures the variability/accuracy of the beta coefficients. It can be used to compute the confidence intervals of the coefficients. For example, the 95% confidence interval for the coefficient ![b0](https://latex.codecogs.com/gif.latex?\beta_0) is defined as ![se1](https://latex.codecogs.com/gif.latex?%5Cbeta_0%20%5Cpm%202%5Ctimes%20SE%28%5Cbeta_0%29), where
 
-- The lower limit of  ![b1](https://latex.codecogs.com/gif.latex?\beta_1)= ![a](https://latex.codecogs.com/gif.latex?32.50287-2%5Ctimes%203.07760%3D26.34767)
-- The higher limit of ![b1](https://latex.codecogs.com/gif.latex?\beta_1)=![b](https://latex.codecogs.com/gif.latex?32.50287&plus;2%5Ctimes%203.07760%3D38.65807)
+- The lower limit of  ![b1](https://latex.codecogs.com/gif.latex?\beta_1) = ![a](https://latex.codecogs.com/gif.latex?32.50287-2%5Ctimes%203.07760%3D26.34767)
+- The higher limit of ![b1](https://latex.codecogs.com/gif.latex?\beta_1) =![b](https://latex.codecogs.com/gif.latex?32.50287&plus;2%5Ctimes%203.07760%3D38.65807)
 
 That is, there is approximately a 95% chance that the interval [26.34767, 38.65807] will contain the true value of ![b0](https://latex.codecogs.com/gif.latex?\beta_0). To get these information, simply type:
 ```r
@@ -111,23 +114,19 @@ confint(model)
 ```
 <img src="{{ site.url }}{{ site.baseurl }}/images/reg/women5.png">
 
-3) **Residual standard error (RSE)**, **R-squared (R2)** and the **F-statistic** are metrics that are used to check how well the model fits to our data.
+3) **Residual standard error (RSE)**, **R-squared (R2)** and the **F-statistic <a name="three"/>** are metrics that are used to check how well the model fits to our data.
 
-- **Residual standard error (RSE):** The RSE (also known as the model sigma) is the residual variation, representing the average variation of the observations points around the fitted regression line. This is the standard deviation of residual errors.
+-**Residual standard error (RSE):** The RSE (also known as the model sigma) is the residual variation, representing the average variation of the observations points around the fitted regression line. This is the standard deviation of residual errors.
 
-RSE provides an absolute measure of patterns in the data that can’t be explained by the model. When comparing two models, the model with the small RSE is a good indication that this model fits the best the data.
+	RSE provides an absolute measure of patterns in the data that can’t be explained by the model. When comparing two models, the model with the small RSE is a good indication that this model fits the best the data.
 
-Dividing the RSE by the average value of the outcome variable will give you the prediction error rate, which should be as small as possible.
-
-In our example, RSE = 2.458, meaning that the observed sales values deviate from the true regression line by approximately 2.5 units in average.
+	Dividing the RSE by the average value of the outcome variable will give you the prediction error rate, which should be as small as possible. In our example, RSE = 2.458, meaning that the observed sales values deviate from the true regression line by approximately 2.5 units in average.
 
 - **R-squared and Adjusted R-squared:** The R-squared (R2) ranges from 0 to 1 and represents the proportion of information (i.e. variation) in the data that can be explained by the model. The adjusted R-squared adjusts for the degrees of freedom.
 
-The R2 measures, how well the model fits the data. For a simple linear regression, R2 is the square of the Pearson correlation coefficient.
-
-A high value of R2 is a good indication. However, as the value of R2 tends to increase when more predictors are added in the model, such as in multiple linear regression model, you should mainly consider the adjusted R-squared, which is a penalized R2 for a higher number of predictors. An (adjusted) R2 that is close to 1 indicates that a large proportion of the variability in the outcome has been explained by the regression model. A number near 0 indicates that the regression model did not explain much of the variability in the outcome. The adjusted R2 will be explained more in the next section.
+	The R2 measures, how well the model fits the data. For a simple linear regression, R2 is the square of the Pearson correlation coefficient. A high value of R2 is a good indication. However, as the value of R2 tends to increase when more predictors are added in the model, such as in multiple linear regression model, you should mainly consider the adjusted R-squared, which is a penalized R2 for a higher number of predictors. An (adjusted) R2 that is close to 1 indicates that a large proportion of the variability in the outcome has been explained by the regression model. A number near 0 indicates that the regression model did not explain much of the variability in the outcome. The adjusted R2 will be explained more in the next section.
 
 - **F-Statistic:** The F-statistic gives the overall significance of the model. It assess whether at least one predictor variable has a non-zero coefficient.
 
-In a simple linear regression, this test is not really interesting since it just duplicates the information in given by the t-test, available in the coefficient table. In fact, the F test is identical to the square of the t test: 113.5 = (10.65)^2. This is true in any model with 1 degree of freedom. The F-statistic becomes more important once we start using multiple predictors as in multiple linear regression. A large F-statistic will corresponds to a statistically significant p-value (p < 0.05). In our example, the F-statistic equal 113.5 producing a p-value of 3.96e-14, which is highly significant.
+	In a simple linear regression, this test is not really interesting since it just duplicates the information in given by the t-test, available in the coefficient table. In fact, the F test is identical to the square of the t test: 113.5 = (10.65)^2. This is true in any model with 1 degree of freedom. The F-statistic becomes more important once we start using multiple predictors as in multiple linear regression. A large F-statistic will corresponds to a statistically significant p-value (p < 0.05). In our example, the F-statistic equal 113.5 producing a p-value of 3.96e-14, which is highly significant.
 
