@@ -58,7 +58,7 @@ Simple linear regression is useful for finding relationships between two continu
 
 **3.1. Building a regression model:** <a name="build"/>
 
-In this post, I’ll walk you through how to build a linear regression in R and use built-in diagnostic plots for linear regression analysis. The data I will be using shows the height and weight of 50 random women. You can download the data [here](C:\Users\User\Desktop\GitHub\sasanmehrabian.github.io\data\women.csv). The first step is to read the data and assign variables x and y to each column.
+In this post, I’ll walk you through how to build a linear regression in R and use built-in diagnostic plots for linear regression analysis. The data I will be using shows the height and weight of 50 random women. You can download the data [here](https://github.com/sasanmehrabian/sasanmehrabian.github.io/tree/master/data/women.csv). The first step is to read the data and assign variables x and y to each column.
 ```r
 data = read.csv(file="C:/Users/User/Desktop/GitHub/sasanmehrabian.github.io/data/women.csv")
 x = data $ height
