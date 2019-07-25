@@ -10,9 +10,18 @@ toc: true
 1. [Introduction](#Introduction)
 2. [Assumptions of linear regression](#assumptions)
 3. [Example of linear regression](#example)
+
 	3.1. [Building a regression model](#build)
+
 	3.2. [Statistics](#stats)
-	3.3. [Outliers, high leverage points, and Influential values](#Out)
+
+		3.2.1. [**Residuals**](#one)
+
+		3.2.2. [**Coefficients:**](#two)
+
+		3.2.3. [**Residual standard error (RSE)**, **R-squared (R2)** and the **F-statistic**](#three)
+
+	3.3. [Outliers, high leverage points, and influential values](#outliers)
 
 
 ## 1. Introduction <a name="Introduction"/> 
@@ -47,7 +56,7 @@ Simple linear regression is useful for finding relationships between two continu
 ## 3. Example of linear regression <a name="example"/> 
 [Return to Top](#toc)
 
-**Example of data:**
+**3.1. Building a regression model:** <a name="build"/>
 
 In this post, I’ll walk you through how to build a linear regression in R and use built-in diagnostic plots for linear regression analysis. The data I will be using shows the height and weight of 50 random women. You can download the data here. The first step is to read the data and assign variables x and y to each column.
 ```r
@@ -65,6 +74,8 @@ abline(model, lwd = 3, col = 2)
 ```
 <img src="{{ site.url }}{{ site.baseurl }}/images/reg/women1.png">
 <img src="{{ site.url }}{{ site.baseurl }}/images/reg/women2.png">
+
+**3.2. Statistics:** <a name="stats"/>
 
 The statistics in the above figure are:
 
@@ -146,3 +157,5 @@ confint(model)
 - *F-Statistic:* The F-statistic gives the overall significance of the model. It assess whether at least one predictor variable has a non-zero coefficient.
 
 	In a simple linear regression, this test is not really interesting since it just duplicates the information given by the t-test, available in the coefficient table. In fact, the F test is identical to the square of the t test: 113.5 = (10.65)^2. This is true in any model with 1 degree of freedom. The F-statistic becomes more important once we start using multiple predictors as in multiple linear regressions. A large F-statistic will corresponds to a statistically significant p-value (p < 0.05). In our example the F-statistic equal 113.5, producing a p-value of 3.96e-14, is highly significant.
+
+**3.3. Outliers, high leverage points, and influential values:** <a name="outliers"/>
