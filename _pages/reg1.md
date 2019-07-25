@@ -90,6 +90,12 @@ res_outliers = boxplot(residuals,col = "grey", horizontal = TRUE, cex.axis = 1.5
 ```
 <img src="{{ site.url }}{{ site.baseurl }}/images/reg/women3.png">
 
+To view the QQ plot of the residuals, type:
+```r
+plot(model, 2, cex.axis=2, cex.lab=2,lwd=3,cex.lab=2)
+```
+<img src="{{ site.url }}{{ site.baseurl }}/images/reg/women6.png">
+
 2) **Coefficients:<a name="two"/>** Shows the regression beta coefficients and their statistical significance. The stars on the very right hand side shows the significance of how much ![x](https://latex.codecogs.com/gif.latex?x) and ![y](https://latex.codecogs.com/gif.latex?y) are related to each other. Mathematically, the beta coefficients (![b0](https://latex.codecogs.com/gif.latex?\beta_0), ![b1](https://latex.codecogs.com/gif.latex?\beta_1)) are determined so that the RSS is as minimal as possible. This method of determining the beta coefficients is technically called least squares regression or ordinary least squares (OLS) regression. Once, the beta coefficients are calculated, a t-test is performed to check whether or not these coefficients are significantly different from zero. A non-zero beta coefficients means that there is a significant relationship between the predictors (![x](https://latex.codecogs.com/gif.latex?x)) and the outcome variable (![y](https://latex.codecogs.com/gif.latex?y)). 
 
 For a given predictor (![x](https://latex.codecogs.com/gif.latex?x)), the t-statistic (and its associated p-value) tests whether or not there is a statistically significant relationship between a given predictor and the outcome variable (![y](https://latex.codecogs.com/gif.latex?y)), that is whether or not the beta coefficient of the predictor is significantly different from zero.
@@ -102,7 +108,10 @@ Mathematically, for a given beta coefficient (![bi](https://latex.codecogs.com/g
 
 In our example, both the p-values for the intercept and the predictor variable are highly significant, so we can reject the null hypothesis and accept the alternative hypothesis, which means that there is a significant association between the predictor and the outcome variables.
 
-To verify the homoscedasticity assumption, the values of residuals are ploted against the predicted values. Their values are standardized. The distance of the point from 0 specifies how bad the prediction was for that value. If the value is positive, then the prediction is low. If the value is negative, then the prediction is high. 0 value indicates prefect prediction. Detecting residual pattern can improve the model.
+To verify the homoscedasticity assumption, the values of residuals are ploted against the predicted values. Their values are standardized. The distance of the point from 0 specifies how bad the prediction was for that value. If the value is positive, then the prediction is low. If the value is negative, then the prediction is high. 0 value indicates prefect prediction. Detecting residual pattern can improve the model. To see if the homoscedasticity of the residuals, simply type:
+```r
+plot(model, 1, cex.axis=2, cex.lab=2,lwd=3,cex.lab=2)
+```
 
 <img src="{{ site.url }}{{ site.baseurl }}/images/reg/women4.png">
 
