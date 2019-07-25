@@ -14,9 +14,12 @@ toc: true
 	3.1. [Building a regression model](#build)
 
 	3.2. [Statistics](#stats)
-		3.2.1. [Residuals](#one)
-		3.2.2. [Coefficients](#two)
-		3.2.3. [Residual standard error (RSE), R-squared (R2) and the F-statistic](#three)
+
+	3.2.1. [Residuals](#one)
+
+	3.2.2. [Coefficients](#two)
+
+	3.2.3. [Residual standard error (RSE), R-squared (R2) and the F-statistic](#three)
 
 	3.3. [Outliers, and influential values](#outliers)
 
@@ -184,3 +187,4 @@ The following plots illustrate the Cook’s distance of our model:
 plot(model, 4, cex.axis=2, cex.lab=2,lwd=3,cex.lab=2, col=4)
 ```
 <img src="{{ site.url }}{{ site.baseurl }}/images/reg/women8.png">
+By default, the top 3 most extreme values are labelled on the Cook’s distance plot.
