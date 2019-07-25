@@ -10,6 +10,9 @@ toc: true
 1. [Introduction](#Introduction)
 2. [Assumptions of linear regression](#assumptions)
 3. [Example of linear regression](#example)
+	3.1. [Building a regression model](#build)
+	3.2. [Statistics](#stats)
+	3.3. [Outliers, high leverage points, and Influential values](#Out)
 
 
 ## 1. Introduction <a name="Introduction"/> 
@@ -24,17 +27,17 @@ Simple linear regression is useful for finding relationships between two continu
 ## 2. Assumptions of Linear Regression <a name="assumptions"/> 
 [Return to Top](#toc)
 
-A) **Linear Relationship between the features and target:** According to this assumption there is linear relationship between the features and target. Linear regression captures only the linear relationship. This can be validated by plotting a scatter plot between the features and the target. The left scatter plot tells us that as x increases y also increases linearly. However, the right scatter plot shows no significant linear relation between x and y.
+**A) Linear Relationship between the features and target:** According to this assumption there is linear relationship between the features and target. Linear regression captures only the linear relationship. This can be validated by plotting a scatter plot between the features and the target. The left scatter plot tells us that as x increases y also increases linearly. However, the right scatter plot shows no significant linear relation between x and y.
 <img src="{{ site.url }}{{ site.baseurl }}/images/reg/reg1.png"> 
-B) **Little or no Multicollinearity between the features:** Multicollinearity is a state of very high inter-correlations or inter-associations among the independent variables. Pair plots and heatmaps(correlation matrix) can be used for identifying highly correlated features. If we have 2 features which are highly correlated we can drop one feature or combine the 2 features to form a new feature,which can further be used for prediction.
+**B) Little or no Multicollinearity between the features:** Multicollinearity is a state of very high inter-correlations or inter-associations among the independent variables. Pair plots and heatmaps(correlation matrix) can be used for identifying highly correlated features. If we have 2 features which are highly correlated we can drop one feature or combine the 2 features to form a new feature,which can further be used for prediction.
 
-C) **Homoscedasticity Assumption:** Homoscedasticity describes a situation in which the error term (that is, the “noise” or random disturbance in the relationship between the features and the target) is the same across all values of the independent variables.A scatter plot of residual values vs predicted values is a goodway to check for homoscedasticity. There should be no clear pattern in the distribution and if there is a specific pattern,the data is heteroscedastic.
+**C) Homoscedasticity Assumption:** Homoscedasticity describes a situation in which the error term (that is, the “noise” or random disturbance in the relationship between the features and the target) is the same across all values of the independent variables.A scatter plot of residual values vs predicted values is a goodway to check for homoscedasticity. There should be no clear pattern in the distribution and if there is a specific pattern,the data is heteroscedastic.
 <img src="{{ site.url }}{{ site.baseurl }}/images/reg/reg2.png">
 
-D) **Normal distribution of error terms:** Normal distribution of the residuals can be validated by plotting a q-q plot. The left graph shows a normal distribution, whereas, the right graph does not.
+**D) Normal distribution of error terms:** Normal distribution of the residuals can be validated by plotting a q-q plot. The left graph shows a normal distribution, whereas, the right graph does not.
 <img src="{{ site.url }}{{ site.baseurl }}/images/reg/reg3.png">
 
-E) **Little or No autocorrelation in the residuals:** Autocorrelation occurs when the residual errors are dependent on each other.The presence of correlation in error terms drastically reduces model’s accuracy. This usually occurs in time series models where the next instant is dependent on the previous instant. Autocorrelation can be tested with the help of the Durbin-Watson test.The null hypothesis of the test is that there is no serial correlation. The Durbin-Watson test statistics is defined as:
+**E) Little or No autocorrelation in the residuals:** Autocorrelation occurs when the residual errors are dependent on each other.The presence of correlation in error terms drastically reduces model’s accuracy. This usually occurs in time series models where the next instant is dependent on the previous instant. Autocorrelation can be tested with the help of the Durbin-Watson test.The null hypothesis of the test is that there is no serial correlation. The Durbin-Watson test statistics is defined as:
 
 	![DW](https://latex.codecogs.com/gif.latex?DW_%7Btest%7D%3D%5Cfrac%7B%5Csum_%7Bt%3D2%7D%5E%7BT%7D%28e_t-e_%7Bt-1%7D%29%5E2%7D%7B%5Csum_%7Bt%3D1%7D%5E%7BT%7De_t%5E2%7D)
 
@@ -43,6 +46,8 @@ E) **Little or No autocorrelation in the residuals:** Autocorrelation occurs whe
 
 ## 3. Example of linear regression <a name="example"/> 
 [Return to Top](#toc)
+
+**Example of data:**
 
 In this post, I’ll walk you through how to build a linear regression in R and use built-in diagnostic plots for linear regression analysis. The data I will be using shows the height and weight of 50 random women. You can download the data here. The first step is to read the data and assign variables x and y to each column.
 ```r
