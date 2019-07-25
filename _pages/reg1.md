@@ -14,14 +14,11 @@ toc: true
 	3.1. [Building a regression model](#build)
 
 	3.2. [Statistics](#stats)
+		3.2.1. [Residuals](#one)
+		3.2.2. [Coefficients](#two)
+		3.2.3. [Residual standard error (RSE), R-squared (R2) and the F-statistic](#three)
 
-		3.2.1. [**Residuals**](#one)
-
-		3.2.2. [**Coefficients:**](#two)
-
-		3.2.3. [**Residual standard error (RSE)**, **R-squared (R2)** and the **F-statistic**](#three)
-
-	3.3. [Outliers, high leverage points, and influential values](#outliers)
+	3.3. [Outliers, and influential values](#outliers)
 
 
 ## 1. Introduction <a name="Introduction"/> 
@@ -108,6 +105,7 @@ res_outliers = boxplot(residuals,col = "grey", horizontal = TRUE, cex.axis = 1.5
 
 To view the QQ plot of the residuals, type:
 ```r
+# QQ plot
 plot(model, 2, cex.axis=2, cex.lab=2,lwd=3,cex.lab=2)
 ```
 <img src="{{ site.url }}{{ site.baseurl }}/images/reg/women6.png">
@@ -126,6 +124,7 @@ In our example, both the p-values for the intercept and the predictor variable a
 
 To verify the homoscedasticity assumption, the values of residuals are ploted against the predicted values. Their values are standardized. The distance of the point from 0 specifies how bad the prediction was for that value. If the value is positive, then the prediction is low. If the value is negative, then the prediction is high. 0 value indicates prefect prediction. Detecting residual pattern can improve the model. To see if the homoscedasticity of the residuals, simply type:
 ```r
+# Residuals
 plot(model, 1, cex.axis=2, cex.lab=2,lwd=3,cex.lab=2)
 ```
 
@@ -138,6 +137,7 @@ plot(model, 1, cex.axis=2, cex.lab=2,lwd=3,cex.lab=2)
 
 That is, there is approximately a 95% chance that the interval [26.34767, 38.65807] will contain the true value of ![b0](https://latex.codecogs.com/gif.latex?\beta_0). To get these information, simply type:
 ```r
+# # confidence interval
 confint(model)
 ```
 <img src="{{ site.url }}{{ site.baseurl }}/images/reg/women5.png">
@@ -158,4 +158,29 @@ confint(model)
 
 	In a simple linear regression, this test is not really interesting since it just duplicates the information given by the t-test, available in the coefficient table. In fact, the F test is identical to the square of the t test: 113.5 = (10.65)^2. This is true in any model with 1 degree of freedom. The F-statistic becomes more important once we start using multiple predictors as in multiple linear regressions. A large F-statistic will corresponds to a statistically significant p-value (p < 0.05). In our example the F-statistic equal 113.5, producing a p-value of 3.96e-14, is highly significant.
 
-**3.3. Outliers, high leverage points, and influential values:** <a name="outliers"/>
+**3.3. Outliers, and influential values:** <a name="outliers"/>
+*Outliers:*
+
+An outlier is a point that has an extreme outcome variable value. The presence of outliers may affect the interpretation of the model, because it increases the RSE. Outliers can be identified by examining the standardized residual (or studentized residual), which is the residual divided by its estimated standard error. Standardized residuals can be interpreted as the number of standard errors away from the regression line.
+
+Observations whose standardized residuals are greater than 3 in absolute value are possible outliers (James et al. 2014). You can view the Standardized residuals by typing:
+```r
+# Standardize residuals
+plot(model, 3, cex.axis=2, cex.lab=2,lwd=3,cex.lab=2, col=4)
+```
+<img src="{{ site.url }}{{ site.baseurl }}/images/reg/women7.png">
+
+For this specific example, we do not have any significant outlier.
+
+*Influential values:*
+
+An influential value is a value, which inclusion or exclusion can alter the results of the regression analysis. Such a value is associated with a large residual. Not all outliers (or extreme data points) are influential in linear regression analysis.
+
+Statisticians have developed a metric called Cook’s distance to determine the influence of a value. A rule of thumb is that an observation has high influence if Cook’s distance exceeds 4/(n - p - 1)(P. Bruce and Bruce 2017), where n is the number of observations and p the number of predictor variables.
+
+The following plots illustrate the Cook’s distance of our model:
+```r
+# cook's distance
+plot(model, 4, cex.axis=2, cex.lab=2,lwd=3,cex.lab=2, col=4)
+```
+<img src="{{ site.url }}{{ site.baseurl }}/images/reg/women8.png">
