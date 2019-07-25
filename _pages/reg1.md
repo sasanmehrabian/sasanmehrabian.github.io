@@ -15,7 +15,7 @@ toc: true
 ## Introduction <a name="Introduction"/> 
 [Return to Top](#toc)
 
-Simple linear regression is useful for finding relationship between two continuous variables. One is predictor or independent variable (X) and other is response or dependent variable (Y). It looks for statistical relationship but not deterministic relationship. Relationship between two variables is said to be deterministic if one variable can be accurately expressed by the other. For example, using temperature in degree Celsius it is possible to accurately predict Fahrenheit. Statistical relationship is not accurate in determining relationship between two variables. For example, relationship between height and weight. Linear regression models provide a simple approach towards supervised learning. They are simple yet effective. The linear equation for univariate linear regression is given below:
+Simple linear regression is useful for finding relationships between two continuous variables. One is predictor or independent variable (X) and the other is the response or dependent variable (Y). It looks for a statistical relationship but not deterministic relationship. The relationship between two variables is said to be deterministic if one variable can be accurately expressed by the other. For example, using temperature in degree Celsius, it is possible to accurately predict Fahrenheit. A statistical relationship is not accurate in determining the relationship between two variables. For example, the relationship between height and weight. Linear regression models provide a simple approach towards supervised learning. They are simple yet effective. The linear equation for univariate linear regression is given below:
 
 ![lm](https://latex.codecogs.com/gif.latex?y%3D%5Cbeta_0x&plus;%5Cbeta_1)
 
@@ -24,7 +24,7 @@ Simple linear regression is useful for finding relationship between two continuo
 ## Assumptions of Linear Regression <a name="assumptions"/> 
 [Return to Top](#toc)
 
-1. **Linear Relationship between the features and target:** According to this assumption there is linear relationship between the features and target. Linear regression captures only linear relationship. This can be validated by plotting a scatter plot between the features and the target. The left scatter plot tells us that as x increases y also increases linearly. However, the right scatter plot shows no significant linear relation between x and y.
+1. **Linear Relationship between the features and target:** According to this assumption there is linear relationship between the features and target. Linear regression captures only the linear relationship. This can be validated by plotting a scatter plot between the features and the target. The left scatter plot tells us that as x increases y also increases linearly. However, the right scatter plot shows no significant linear relation between x and y.
 <img src="{{ site.url }}{{ site.baseurl }}/images/reg/reg1.png"> 
 2. **Little or no Multicollinearity between the features:** Multicollinearity is a state of very high inter-correlations or inter-associations among the independent variables. Pair plots and heatmaps(correlation matrix) can be used for identifying highly correlated features. If we have 2 features which are highly correlated we can drop one feature or combine the 2 features to form a new feature,which can further be used for prediction.
 
@@ -34,7 +34,7 @@ Simple linear regression is useful for finding relationship between two continuo
 4. **Normal distribution of error terms:** Normal distribution of the residuals can be validated by plotting a q-q plot. The left graph shows a normal distribution, whereas, the right graph does not.
 <img src="{{ site.url }}{{ site.baseurl }}/images/reg/reg3.png">
 
-5. **Little or No autocorrelation in the residuals:** Autocorrelation occurs when the residual errors are dependent on each other.The presence of correlation in error terms drastically reduces model’s accuracy. This usually occurs in time series models where the next instant is dependent on previous instant. Autocorrelation can be tested with the help of Durbin-Watson test.The null hypothesis of the test is that there is no serial correlation. The Durbin-Watson test statistics is defined as:
+5. **Little or No autocorrelation in the residuals:** Autocorrelation occurs when the residual errors are dependent on each other.The presence of correlation in error terms drastically reduces model’s accuracy. This usually occurs in time series models where the next instant is dependent on the previous instant. Autocorrelation can be tested with the help of the Durbin-Watson test.The null hypothesis of the test is that there is no serial correlation. The Durbin-Watson test statistics is defined as:
 
 	![DW](https://latex.codecogs.com/gif.latex?DW_%7Btest%7D%3D%5Cfrac%7B%5Csum_%7Bt%3D2%7D%5E%7BT%7D%28e_t-e_%7Bt-1%7D%29%5E2%7D%7B%5Csum_%7Bt%3D1%7D%5E%7BT%7De_t%5E2%7D)
 
@@ -104,7 +104,7 @@ The statistical hypotheses are as follow:
 - **Null hypothesis (H0):** the coefficients are equal to zero (i.e., no relationship between x and y)
 - **Alternative Hypothesis (Ha):** the coefficients are not equal to zero (i.e., there is some relationship between x and y)
 
-Mathematically, for a given beta coefficient (![bi](https://latex.codecogs.com/gif.latex?\beta_i)), the t-test measures the number of standard deviations that beta is away from 0. Thus a large t-statistic will produce a small p-value. The higher the t-statistic (and the lower the p-value), the more significant the predictor. The symbols to the right visually specifies the level of significance. The line below the table shows the definition of these symbols; one star means 0.01 < p < 0.05. The more the stars beside the variable’s p-value, the more significant the variable. The t-statistic is a very useful guide for whether or not to include a predictor in a model. This will be useful in multi-variate linear regression. High t-statistics (which go with low p-values near 0) indicate that a predictor should be retained in a model, while very low t-statistics indicate a predictor could be dropped.
+Mathematically, for a given beta coefficient (![bi](https://latex.codecogs.com/gif.latex?\beta_i)), the t-test measures the number of standard deviations that beta is away from 0. Thus a large t-statistic will produce a small p-value. The higher the t-statistic (and the lower the p-value), the more significant the predictor. The symbols to the right visually specifies the level of significance. The line below the table shows the definition of these symbols; one star means 0.01 < p < 0.05. The more the stars beside the variable’s p-value, the more significant the variable. The t-statistic is a very useful guide for whether or not to include a predictor in a model. This will be useful in multivariate linear regression. High t-statistics (which go with low p-values near 0) indicate that a predictor should be retained in a model, while very low t-statistics indicate a predictor could be dropped.
 
 In our example, both the p-values for the intercept and the predictor variable are highly significant, so we can reject the null hypothesis and accept the alternative hypothesis, which means that there is a significant association between the predictor and the outcome variables.
 
@@ -130,9 +130,9 @@ confint(model)
 
 - *Residual standard error (RSE):* The RSE (also known as the model sigma) is the residual variation, representing the average variation of the observations points around the fitted regression line. This is the standard deviation of residual errors.
 
-	RSE provides an absolute measure of patterns in the data that can’t be explained by the model. When comparing two models, the model with the small RSE is a good indication that this model fits the best the data.
+	RSE provides an absolute measure of patterns in the data that can’t be explained by the model. When comparing two models, the model with the smallest RSE is a good indication that this model fits the data the best.
 
-	Dividing the RSE by the average value of the outcome variable will give you the prediction error rate, which should be as small as possible. In our example, RSE = 2.458, meaning that the observed sales values deviate from the true regression line by approximately 2.5 units in average.
+	Dividing the RSE by the average value of the outcome variable will give you the prediction error rate, which should be as small as possible. In our example, RSE = 2.458, meaning that the observed sales values deviate from the true regression line by approximately 2.5 units on average.
 
 - *R-squared and Adjusted R-squared:* The R-squared (R2) ranges from 0 to 1 and represents the proportion of information (i.e. variation) in the data that can be explained by the model. The adjusted R-squared adjusts for the degrees of freedom.
 
@@ -140,5 +140,4 @@ confint(model)
 
 - *F-Statistic:* The F-statistic gives the overall significance of the model. It assess whether at least one predictor variable has a non-zero coefficient.
 
-	In a simple linear regression, this test is not really interesting since it just duplicates the information in given by the t-test, available in the coefficient table. In fact, the F test is identical to the square of the t test: 113.5 = (10.65)^2. This is true in any model with 1 degree of freedom. The F-statistic becomes more important once we start using multiple predictors as in multiple linear regression. A large F-statistic will corresponds to a statistically significant p-value (p < 0.05). In our example, the F-statistic equal 113.5 producing a p-value of 3.96e-14, which is highly significant.
-
+	In a simple linear regression, this test is not really interesting since it just duplicates the information given by the t-test, available in the coefficient table. In fact, the F test is identical to the square of the t test: 113.5 = (10.65)^2. This is true in any model with 1 degree of freedom. The F-statistic becomes more important once we start using multiple predictors as in multiple linear regressions. A large F-statistic will corresponds to a statistically significant p-value (p < 0.05). In our example the F-statistic equal 113.5, producing a p-value of 3.96e-14, is highly significant.
