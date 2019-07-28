@@ -16,7 +16,7 @@ toc: true
 ## 1. Introduction <a name="Introduction"/> 
 [Return to Top](#toc)
 
-Multiple linear regression is an extension of simple linear regression used to predict an outcome variable (![y](https://latex.codecogs.com/gif.latex?y)) on the basis of multiple distinct predictor variables (![x](https://latex.codecogs.com/gif.latex?x)). The prediction of y with n predictor variables is expressed by the following equation:
+Multiple linear regression is an extension of simple linear regression used to predict an outcome variable (![y](https://latex.codecogs.com/gif.latex?y)) on the basis of multiple distinct predictor variables (![x](https://latex.codecogs.com/gif.latex?x)). The prediction of ![y](https://latex.codecogs.com/gif.latex?y) with n predictor variables is expressed by the following equation:
 
 ![mlr](https://latex.codecogs.com/gif.latex?y%3D%5Cbeta_0%20&plus;%5Cbeta_1x_1&plus;%5Cbeta_2x_2&plus;%5Ccdot%5Ccdot%5Ccdot&plus;%5Cbeta_nx_n)
 
